@@ -1,0 +1,216 @@
+* {
+    box-sizing: border-box;
+}
+
+body{
+	font-family: fireemblem;
+	font-size: 100%;
+	color: #3A3A3A;
+	background-color: #f5f5f5;
+}
+
+header{
+	margin-left: 15%;
+	margin-right: 10%;
+}
+	
+aside{
+	margin-left: 2%;
+	width: 8%;
+	float: left;
+	overflow: hidden;
+}
+
+aside a{
+	color: #ff5700
+}
+
+main{
+	float: right;
+	width: 70%;
+	margin-right: 10%;
+}
+
+main a{
+	color:blue;
+}
+
+h1{
+	font-size: 160%;
+	color: #7d1fdb;
+}
+
+h2{
+	font-size: 140%;
+}
+
+h2.nav{
+	color: #7d1fdb
+}
+
+p {
+	font-family: calibri;
+	font-size: 120%;
+	line-height: 1.4;
+}
+
+
+p.bigger{
+	font-size: 120%;
+	text-decoration: underline;
+}
+
+/*table of contents*/
+#toc_container {
+    background: #f9f9f9 none repeat scroll 0 0;
+    border: 1px solid #aaa;
+    display: table;
+    margin-bottom: 1em;
+    padding: 20px;
+    width: auto;
+}
+
+.toc_title {
+    font-weight: 700;
+    text-align: center;
+}
+
+#toc_container li, #toc_container ul, #toc_container ul li{
+    list-style: outside none none !important;
+}
+
+table{
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+/*nested table*/
+table td table{
+	margin: auto;
+	border: none;
+}
+
+/*nested table cells*/
+table td table td{
+	border: none;
+}
+
+th, td {
+	border: 1px solid black;
+	padding: .2em .7em;
+	text-align: center;
+}
+
+td.left {
+	text-align: left;
+}
+
+thead { background-color: aqua; }
+
+/*tooltip*/
+.tooltip {
+    position: relative;
+    display: inline-block;
+	}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 30em;
+    background-color: #ff5700;
+    color: #7d1fdb;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 10%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #ff5700 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/*spoiler button*/
+.spoilerbutton {display:block;margin:5px 0;}
+
+.spoiler {overflow:hidden;background:#e8e8e8;}
+
+.spoiler h2 {text-align:center;}
+
+.spoiler h3 {text-align:center;}
+
+.spoiler p{margin:2em;}
+
+.spoiler img{margin-bottom:2em;}
+
+.spoilerbutton[value="Show Glossary"] + .spoiler > div {display:none;}
+
+.spoilerbutton[value="Hide Glossary"] + .spoiler {padding:5px;}
+
+.spoilerbutton[value="Show Chart"] + .spoiler > div {display:none;}
+
+.spoilerbutton[value="Hide Chart"] + .spoiler {padding:5px;}
+
+.spoilerbutton[value="Show Example"] + .spoiler > div {display:none}
+
+.spoilerbutton[value="Hide Example"] + .spoiler {padding:5px;}
+
+.tab1 {
+	margin-left: 3%;
+}
+
+.tab2 {
+	margin-left: 6%;
+}
+.tab3 {
+	margin-left: 9%;
+}
+
+main img {
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+	padding-top: 2em;
+}
+
+/*image float css*/
+.column {
+  float: left;
+  width: 50%;
+  padding: 5px;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+@font-face {
+    font-family: fireemblem;
+    src: url(fonts/FOT-ChiaroStd-B.otf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@media (max-width: 800px) {
+    aside {
+    display: none;
+    }
+}

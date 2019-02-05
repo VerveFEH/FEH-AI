@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Mia's AI Manipulation Instructional Academy - Charts</title>
+			<link rel="shortcut icon" href="favicon.ico">
+			<link rel="stylesheet" type="text/css" href="main.css">
+			<meta charset="utf-8">
+			<meta name="description" content="A guide on the AI behavior in the game Fire Emblem: Heroes">
+			<meta name="keywords" content="fire emblem heroes, ai">
+		</head>
+		
+		<body>
+			<header>
+				<h1>
+					<a><img src="Mia.png" alt="Mia" id="logo" onclick="shukumei.play()"></a>&nbsp;&nbsp;
+					Mia's AI Manipulation Instructional Academy
+				</h1>
+			</header>
+			<aside>
+				<a href="index.html">Home<br></a>
+				<a href="intro.html">Introduction<br></a>
+				<a href="textguide.html">Plain Text Guide<br></a>
+				<a href="noteguide.html">Annotated Guide<br></a>
+				<a href="charts.html">Charts<br></a>
+				<a href="glossary.html">Glossary<br></a>
+				<a href="changelog.html">Changelog<br></a>
+				<a href="JP/chartsJP.html">日本語<br></a>
+			</aside>
+			<main>
+				<h1 style="text-align:center">Charts</h1>
+				
+				<div id="toc_container">
+				<p class="toc_title">Charts</p>
+				<ul class="toc_list">
+					<li><a href="#chartA">Chart A: Pre-Combat Assist User Eligibility</a></li>
+					<li><a href="#chartB">Chart B: Pre-Combat Assist Target Eligibility</a></li>
+					<li><a href="#chartC">Chart C: Post-Combat Assist User Eligibility</a></li>
+					<li><a href="#chartD">Chart D: Post-Combat Assist Target Eligibility</a></li>
+					<li><a href="#chartE">Chart E: Pre-Combat Heal Thresholds</a></li>
+					<li><a href="#chartF">Chart F: Debuff Skills List</a></li>
+					<li><a href="#chartG">Chart G: Misc Debuff Skills List</a></li>
+					<li><a href="#chartH">Chart H: Skills That Affect Chase Targeting</a></li>
+					<li><a href="#chartI">Chart I: Skills That Do NOT Affect Chase Targeting</a></li>
+
+				</ul>
+				</div>
+				
+				<br><br><h2 id="chartA">Chart A: Pre-Combat Assist User Eligibility</h2>
+				<p>This chart shows the requirements for users of various assists to be eligible to perform their assist pre-combat (meaning, while attacks can still be made by anyone on the team).</p>
+				<table>
+					<tr>
+					<thead>
+						<th>Assist Type</th>
+						<th>Related Assists</th>
+						<th>User Eligibility</th>
+					</thead>
+					</tr>
+					<tr>
+						<th>Refresh</th>
+						<td class="left">
+							<table>
+								<tr><td>Dance</td></tr>
+								<tr><td>Sing</td></tr>
+								<tr><td>Gray Waves</td></tr>
+							</table>
+						<td class="left">
+							<ul>
+								<li>Has no combat resulting in a win</li>
+								<li>Has no combat in which unit does at least 5 damage</li>
+							</ul>
+					</tr>
+					<tr>
+						<th>Heal</th>
+						<td class="left">
+							<table>
+								<tr>
+									<td>Heal</td>
+									<td>Mend</td>
+									<td>Reconcile</td>
+								</tr>
+								<tr>
+									<td>Physic</td>
+									<td>Physic+</td>
+									<td>Recover</td>
+								</tr>
+								<tr>
+									<td>Recover+</td>
+									<td>Martyr</td>
+									<td>Martyr+</td>
+								</tr>
+								<tr>
+									<td>Rehabilitate</td>
+									<td>Rehabilitate+</td>
+									<td>Restore</td>
+								</tr>
+								<tr>
+									<td>Restore+</td>
+									<td>Sacrifice</td>
+									<td>Ardent Sacrifice</td>
+								</tr>
+								<tr>
+									<td>Reciprocal Aid</td>
+								</tr>
+							</table>
+						</td>
+						<td class="left">
+							<ul>
+								<li>Has no combat resulting in a win</li>
+								<li>If using Ardent Sacrifice or Reciprocal Aid, must have no weapon equipped</li>
+								<li>If using Sacrifice, no combat in which unit does at least 5 damage</li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<th>Cleanse</th>
+						<td class="left">
+							<table>
+								<tr><td>Restore</td></tr>
+								<tr><td>Restore+</td></tr>
+							</table>
+						</td>
+						<td class="left">
+							<ul>
+								<li>Has no combat resulting in a win</li>
+								<li>Must not have any eligible targets for pre-combat heal</li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<th>Rally</th>
+						<td class="left">
+							<table>
+								<tr>
+									<td>Rally Attack</td>
+									<td>Rally Speed</td>
+									<td>Rally Defense</td>
+								</tr>
+								<tr>
+									<td>Rally Resistance</td>
+									<td>Rally Atk/Spd</td>
+									<td>Rally Atk/Spd+</td>
+								</tr>
+								<tr>
+									<td>Rally Atk/Def</td>
+									<td>Rally Atk/Def+</td>
+									<td>Rally Atk/Res</td>
+
+								</tr>
+								<tr>
+									<td>Rally Spd/Def</td>
+									<td>Rally Spd/Res</td>
+									<td>Rally Def/Res</td>
+								</tr>
+								<tr>
+									<td>Rally Up Atk</td>
+									<td>Rally Up Atk+</td>
+									<td>Harsh Command</td>
+								</tr>
+							</table>
+						</td>
+						<td class="left">
+							<ul>
+								<li>Has no combat resulting in a win</li>
+								<li>Has no combat in which unit does at least 5 damage</li>	
+								<li>If debuffer, must not be able to reduce an enemy's def or res by at least 2 points</li>
+								<li>If afflictor, has no combat resulting in a draw</li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<th>Movement Assist</th>
+						<td class="left">
+							<table>
+								<tr>
+									<td>Shove</td>
+									<td>Smite</td>
+								</tr>
+								<tr>
+									<td>Draw Back</td>
+									<td>Reposition</td>
+								</tr>
+							</table>
+						<td class="left">
+							<ul>
+								<li>Has at least one ally who has its action and has the "threatens enemy" status</li>
+							</ul>
+						</td>
+					</tr>
+				</table>
+				
+				<br><br><h2 id="chartB">Chart B: Pre-Combat Assist Target Eligibility</h2>
+				<p>This chart shows the requirements for targets of various assists to be eligible to receive those assists pre-combat (meaning, while attacks can still be made by anyone on the team). This chart does not include requirements according to game rules (i.e. must be missing HP to be healed), only extra rules used by the AI.</p>
+				<table>
+					<tr>
+					<thead>
+						<th>Assist Type</th>
+						<th>Related Assists</th>
+						<th>Target Eligibility</th>
+					</thead>
+					</tr>
+					<tr>
+						<th>Refresh</th>
+						<td class="left">
+							<table>
+								<tr><td>Dance</td></tr>
+								<tr><td>Sing</td></tr>
+								<tr><td>Gray Waves</td></tr>
+							</table>
+						<td class="left">
+							<ul>
+								<li>No additional requirements</li>
+							</ul>
+					</tr>
+					<tr>
+						<th>Heal</th>
+						<td class="left">
+							<table>
+								<tr>
+									<td>Heal</td>
+									<td>Mend</td>
+									<td>Reconcile</td>
+								</tr>
+								<tr>
+									<td>Physic</td>
+									<td>Physic+</td>
+									<td>Recover</td>
+								</tr>
+								<tr>
+									<td>Recover+</td>
+									<td>Martyr</td>
+									<td>Martyr+</td>
+								</tr>
+								<tr>
+									<td>Rehabilitate</td>
+									<td>Rehabilitate+</td>
+									<td>Restore</td>
+								</tr>
+								<tr>
+									<td>Restore+</td>
+									<td>Sacrifice</td>
+									<td>Ardent Sacrifice</td>
+								</tr>
+								<tr>
+									<td>Reciprocal Aid</td>
+								</tr>
+							</table>
+						</td>
+						<td class="left">
+							<ul>
+								<li>Is missing and can be healed by at least a certain amount of HP, according to assist being used (see <a href="#chartF">Chart F</a>)</li>
+								<li>If receiving heal from Restore, must not be affected by any debuff</li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<th>Cleanse</th>
+						<td class="left">
+							<table>
+								<tr><td>Restore</td></tr>
+								<tr><td>Restore+</td></tr>
+							</table>
+						</td>
+						<td class="left">
+							<ul>
+								<li>Must be affected by a debuff</li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<th>Rally</th>
+						<td class="left">
+							<table>
+								<tr>
+									<td>Rally Attack</td>
+									<td>Rally Speed</td>
+									<td>Rally Defense</td>
+								</tr>
+								<tr>
+									<td>Rally Resistance</td>
+									<td>Rally Atk/Spd</td>
+									<td>Rally Atk/Spd+</td>
+								</tr>
+								<tr>
+									<td>Rally Atk/Def</td>
+									<td>Rally Atk/Def+</td>
+									<td>Rally Atk/Res</td>
+
+								</tr>
+								<tr>
+									<td>Rally Spd/Def</td>
+									<td>Rally Spd/Res</td>
+									<td>Rally Def/Res</td>
+								</tr>
+								<tr>
+									<td>Rally Up Atk</td>
+									<td>Rally Up Atk+</td>
+									<td>Harsh Command</td>
+								</tr>
+							</table>
+						</td>
+						<td class="left">
+							<ul>
+								<li>Has its action</li>
+								<li>Has the "threatening enemy" status</li>
+								<li>If receiving a rally skill, can be buffed by at least 2 points in one particular stat by the rally</li>
+								<li>If receiving Rally Up, target has at least 1 ally (or itself) in range of assister</li>
+								<li>If receiving Harsh Command or Sacrifice, must have a stat debuff</li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<th>Movement Assist</th>
+						<td class="left">
+							<table>
+								<tr>
+									<td>Shove</td>
+									<td>Smite</td>
+								</tr>
+								<tr>
+									<td>Draw Back</td>
+									<td>Reposition</td>
+								</tr>
+							</table>
+						</td>
+						<td class="left">
+							<ul>
+								<li>Does not have its action</li>
+								<li>Is adjacent to an enemy that is threatened by an ally who has its action(if at least 1 melee ally is blocked)</li>
+								<li>Is 1 space away from an enemy that is threatened by an ally who has its action(if at least 1 ranged ally is blocked)</li>
+							</ul>
+						</td>
+					</tr>
+				</table>
+				
+				<br><br><h2 id="chartC">Chart C: Post-Combat Assist User Eligibility</h2>
+				<p>This chart shows the requirements for users of various assists to be eligible to perform their assist post-combat (meaning, no attacks can be made by anyone on the team). </p>
+				<table>
+					<tr>
+					<thead>
+						<th>Assist Type</th>
+						<th>Related Assists</th>
+						<th>User Eligibility</th>
+					</thead>
+					</tr>
+					<tr>
+						<th>Refresh</th>
+						<td class="left">
+							<table>
+								<tr><td>Dance</td></tr>
+								<tr><td>Sing</td></tr>
+								<tr><td>Gray Waves</td></tr>
+							</table>
+						<td class="left">
+							<ul>
+								<li>No additional requirements</li>
+							</ul>
+					</tr>
+					<tr>
+						<th>Heal</th>
+						<td class="left">
+							<table>
+								<tr>
+									<td>Heal</td>
+									<td>Mend</td>
+									<td>Reconcile</td>
+								</tr>
+								<tr>
+									<td>Physic</td>
+									<td>Physic+</td>
+									<td>Recover</td>
+								</tr>
+								<tr>
+									<td>Recover+</td>
+									<td>Martyr</td>
+									<td>Martyr+</td>
+								</tr>
+								<tr>
+									<td>Rehabilitate</td>
+									<td>Rehabilitate+</td>
+									<td>Restore</td>
+								</tr>
+								<tr>
+									<td>Restore+</td>
+									<td>Sacrifice</td>
+									<td>Ardent Sacrifice</td>
+								</tr>
+								<tr>
+									<td>Reciprocal Aid</td>
+								</tr>
+							</table>
+						</td>
+						<td class="left">
+							<ul>
+								<li>Ardent Sacrifice and Reciprocal Aid must be able to heal its target for as much as the user loses HP</li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<th>Cleanse</th>
+						<td class="left">
+							<table>
+								<tr><td>Restore</td></tr>
+								<tr><td>Restore+</td></tr>
+							</table>
+						</td>
+						<td class="left">
+							<ul>
+								<li>Must have no targets that satisfy both: 1. can be healed by at least 10, 2. is not affected by a debuff </li>
+								<li>Must have at least one target that has a debuff</li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<th>Rally</th>
+						<td class="left">
+							<table>
+								<tr>
+									<td>Rally Attack</td>
+									<td>Rally Speed</td>
+									<td>Rally Defense</td>
+								</tr>
+								<tr>
+									<td>Rally Resistance</td>
+									<td>Rally Atk/Spd</td>
+									<td>Rally Atk/Spd+</td>
+								</tr>
+								<tr>
+									<td>Rally Atk/Def</td>
+									<td>Rally Atk/Def+</td>
+									<td>Rally Atk/Res</td>
+
+								</tr>
+								<tr>
+									<td>Rally Spd/Def</td>
+									<td>Rally Spd/Res</td>
+									<td>Rally Def/Res</td>
+								</tr>
+								<tr>
+									<td>Rally Up Atk</td>
+									<td>Rally Up Atk+</td>
+								</tr>
+								<tr>
+									<td>Harsh Command</td>
+									<td>Sacrifice</td>
+								</tr>
+							</table>
+						</td>
+						<td class="left">
+							<ul>
+								<li>If using Sacrifice, must not be able to heal any another unit</li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<th>Movement Assist</th>
+						<td class="left">
+							<table>
+								<tr>
+									<td>Shove</td>
+									<td>Smite</td>
+								</tr>
+								<tr>
+									<td>Draw Back</td>
+									<td>Reposition</td>
+								</tr>
+								<tr>
+									<td>Swap</td>
+									<td>Future Vision</td>
+								</tr>
+							</table>
+						<td class="left">
+							<ul>
+								<li>If user is a melee unit with a weapon equipped, it gains "blocker" status</li>
+							</ul>
+						</td>
+					</tr>
+				</table>
+				
+				<br><br><h2 id="chartD">Chart D: Post-Combat Assist Target Eligibility</h2>
+				<p>This chart shows the requirements for targets of various assists to be eligible to receive those assists post-combat (meaning, no attacks can be made by anyone on the team). This chart does not include requirements according to game rules (i.e. must be missing HP to be healed), only extra rules used by the AI.</p>
+				<table>
+					<tr>
+					<thead>
+						<th>Assist Type</th>
+						<th>Related Assists</th>
+						<th>Target Eligibility</th>
+					</thead>
+					</tr>
+					<tr>
+						<th>Refresh</th>
+						<td class="left">
+							<table>
+								<tr><td>Dance</td></tr>
+								<tr><td>Sing</td></tr>
+								<tr><td>Gray Waves</td></tr>
+
+							</table>
+						<td class="left">
+							<ul>
+								<li>No additional requirements</li>
+							</ul>
+					</tr>
+					<tr>
+						<th>Heal</th>
+						<td class="left">
+							<table>
+								<tr>
+									<td>Heal</td>
+									<td>Mend</td>
+									<td>Reconcile</td>
+								</tr>
+								<tr>
+									<td>Physic</td>
+									<td>Physic+</td>
+									<td>Recover</td>
+								</tr>
+								<tr>
+									<td>Recover+</td>
+									<td>Martyr</td>
+									<td>Martyr+</td>
+								</tr>
+								<tr>
+									<td>Rehabilitate</td>
+									<td>Rehabilitate+</td>
+									<td>Restore</td>
+								</tr>
+								<tr>
+									<td>Restore+</td>
+									<td>Sacrifice</td>
+									<td>Ardent Sacrifice</td>
+								</tr>
+								<tr>
+									<td>Reciprocal Aid</td>
+								</tr>
+							</table>
+						</td>
+						<td class="left">
+							<ul>
+								<li>Ardent Sacrifice and Reciprocal Aid must be able to heal for as much as the user loses HP</li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<th>Cleanse</th>
+						<td class="left">
+							<table>
+								<tr><td>Restore</td></tr>
+								<tr><td>Restore+</td></tr>
+							</table>
+						</td>
+						<td class="left">
+							<ul>
+								<li>Must be affected by a debuff</li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<th>Rally</th>
+						<td class="left">
+							<table>
+								<tr>
+									<td>Rally Attack</td>
+									<td>Rally Speed</td>
+									<td>Rally Defense</td>
+								</tr>
+								<tr>
+									<td>Rally Resistance</td>
+									<td>Rally Atk/Spd</td>
+									<td>Rally Atk/Spd+</td>
+								</tr>
+								<tr>
+									<td>Rally Atk/Def</td>
+									<td>Rally Atk/Res</td>
+									<td>Rally Spd/Def</td>
+
+								</tr>
+								<tr>
+									<td>Rally Spd/Def+</td>
+									<td>Rally Spd/Res</td>
+									<td>Rally Def/Res</td>
+								</tr>
+								<tr>
+									<td>Rally Up Atk</td>
+									<td>Rally Up Atk+</td>
+								</tr>
+								<tr>
+									<td>Harsh Command</td>
+									<td>Sacrifice</td>
+								</tr>
+							</table>
+						</td>
+						<td class="left">
+							<ul>
+								<li>Has "threatens enemy" or "threatened by enemy" status</li>
+								<li>If receiving a rally skill, can be buffed by at least 2 points in one particular stat by the rally</li>
+								<li>If receiving Rally Up, target has at least 1 ally (or itself) in range of assister</li>
+								<li>If debuffs are being reversed by Sacrifice, must not be healed by it and cannot have action</li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<th>Movement Assist</th>
+						<td class="left">
+							<table>
+								<tr>
+									<td>Shove</td>
+									<td>Smite</td>
+								</tr>
+								<tr>
+									<td>Draw Back</td>
+									<td>Reposition</td>
+								</tr>
+								<tr>
+									<td>Swap</td>
+									<td>Future Vision</td>
+								</tr>
+							</table>
+						<td class="left">
+							<ul>
+								<li>Does not have its action</li>
+								<li>Has "threatened by enemy" status</li>
+								<li>Can be moved into less enemy threat according to what assist is being used</li>
+							</ul>
+						</td>
+					</tr>
+				</table>
+				
+				<br><br><h2 id="chartE">Chart E: Post-Movement Rally Target Eligibility</h2>
+				<p>This chart shows the requirements for targets of various assists to be eligible to receive those assists post-combat (meaning, no attacks can be made by anyone on the team). This chart does not include requirements according to game rules (i.e. must be missing HP to be healed), only extra rules used by the AI.</p>
+				<table>
+					<tr>
+					<thead>
+						<th>Assist Type</th>
+						<th>Related Assists</th>
+						<th>Target Eligibility</th>
+					</thead>
+					</tr>
+					<tr>
+						<th>Rally</th>
+						<td class="left">
+							<table>
+								<tr>
+									<td>Rally Attack</td>
+									<td>Rally Speed</td>
+									<td>Rally Defense</td>
+								</tr>
+								<tr>
+									<td>Rally Resistance</td>
+									<td>Rally Atk/Spd</td>
+									<td>Rally Atk/Spd+</td>
+								</tr>
+								<tr>
+									<td>Rally Atk/Def</td>
+									<td>Rally Atk/Res</td>
+									<td>Rally Spd/Def</td>
+
+								</tr>
+								<tr>
+									<td>Rally Spd/Def+</td>
+									<td>Rally Spd/Res</td>
+									<td>Rally Def/Res</td>
+								</tr>
+								<tr>
+									<td>Rally Up Atk</td>
+									<td>Rally Up Atk+</td>
+								</tr>
+								<tr>
+									<td>Harsh Command</td>
+									<td>Sacrifice</td>
+								</tr>
+							</table>
+						</td>
+						<td class="left">
+							<ul>
+								<li>Has "threatens enemy" or "threatened by enemy" status</li>
+								<li>If receiving Rally Up, target has at least 1 ally (or itself) in range of assister</li>
+							</ul>
+						</td>
+					</tr>
+				</table>
+				
+				<br><br><h2 id="chartF">Chart F: Pre-Combat Heal Thresholds</h2>
+				<p>This chart shows the amount of health required to be restored by the various healing assists in order to be considered as a target for pre-combat healing.</p>
+				<table>
+					<tr>
+					<thead>
+						<th>Heal Threshold</th>
+						<th>Specified Assists</th>
+					</thead>
+					</tr>
+					<tr>
+						<th>1</th>
+						<td class="left">
+							<table>
+								<tr>
+									<td>Sacrifice</td>
+									<td>
+										<div class="tooltip">Reciprocal Aid*
+											<span class="tooltiptext">Amount of HP healed must equal amount of HP lost</span>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>5</th>
+						<td class="left">
+							<table>
+								<tr>
+									<td>Heal</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>7</th>
+						<td class="left">
+							<table>
+								<tr>
+									<td>Reconcile</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>8</th>
+						<td class="left">
+							<table>
+								<tr>
+									<td>Physic</td>
+									<td>Physic+</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>10</th>
+						<td class="left">
+							<table>
+								<tr>
+									<td>Mend</td>
+									<td>Recover</td>
+									<td>Recover+</td>
+								</tr>
+								<tr>
+									<td>Martyr</td>
+									<td>Martyr+</td>
+									<td>Rehabilitate</td>
+								</tr>
+								<tr>
+									<td>Rehabilitate+</td>
+									<td>Restore</td>
+									<td>Restore+</td>
+								</tr>
+								<tr>
+									<td>
+										<div class="tooltip">Ardent Sacrifice*
+											<span class="tooltiptext">Amount of HP healed must equal amount of HP lost</span>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+				
+				<br><br><h2 id="chartG">Chart G: Def/Res Debuff Skills List</h2>
+				<p>This chart lists skills which inflict Def and Res debuffs and are taken into consideration for the "debuffer" status for an attacker. If a skill inflicts def or res debuffs but is not on this list, it is NOT taken into consideration for the "debuffer" status. Don't ask me why, it seems to be completely arbitrary. 
+				
+				<br><br>There are currently two tiers of priority within this category. Tier 1 skills will have priority over tier 2 skills.</p>
+				
+				<h3>Tier 1<h3>
+				<table>
+					<tr>
+						<th>Weapons:</th>
+						<td class="left">
+							<table>
+								<tr>
+									<td>Hliðskjálf</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table><br>
+				
+				<h3>Tier 2<h3>
+				<table>
+					<tr>
+						<th>Weapons:</th>
+						<td class="left">
+							<table>
+								<tr>
+									<td>Rogue Dagger</td>
+									<td>Rogue Dagger+ (Unrefined)</td>
+								</tr>
+								<tr>
+									<td>Poison Dagger (vs infantry)</td>
+									<td>Poison Dagger+ (vs infantry)</td>
+								</tr>
+								<tr>
+									<td>Kitty Paddle (vs tomes)</td>
+									<td>Kitty Paddle+ (vs tomes)</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>Passives:</th>
+						<td class="left">
+							<table>
+								<tr>
+									<td>Seal Def 1/2/3</td>
+									<td>Seal Res 1/2/3</td>
+								</tr>
+								<tr>
+									<td>Seal Atk/Def 1/2</td>
+									<td>Seal Def/Res 1/2</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+				
+				<br><br><h2 id="chartH">Chart H: Miscellaneous Debuff Skills List</h2>
+				<p>This chart lists skills which inflict miscellaneous debuffs/poison damage and are taken into consideration for the "afflicter" status for an attacker. If a skill inflicts a debuff or does poison damage but is not on this list, it is NOT taken into consideration for the "afflicter" status. Don't ask me why, it seems to be completely arbitrary.</p>
+				<table>
+					<tr>
+						<th>Weapons:</th>
+						<td class="left">
+							<table>
+								<tr>
+									<td>Pain</td>
+									<td>Pain+ (unrefined)</td>
+									<td>Pain+ (refined)</td>
+								</tr>
+								<tr>
+									<td>Panic</td>
+									<td>Panic+ (unrefined)</td>
+									<td>Panic+ (refined)</td>
+								</tr>
+								<tr>
+									<td>Candlelight</td>
+									<td>Candlelight+ (unrefined)</td>
+									<td>Candlelight+ (refined)</td>
+								</tr>
+								<tr>
+									<td>Flash</td>
+									<td>Flash+ (unrefined)</td>
+									<td>Flash+ (refined)</td>
+								</tr>
+								<tr>
+									<td>Trilemma</td>
+									<td>Trilemma+ (unrefined)</td>
+									<td>Trilemma+ (refined)</td>
+								</tr>
+								<tr>
+									<td>Legion's Axe</td>
+									<td>Legion's Axe+ (unrefined)</td>
+									<td>Legion's Axe+ (refined)</td>
+								</tr>
+								<tr>
+									<td>Monstrous Bow+ (refined)</td>
+									<td>Spectral Tome+ (refined)</td>
+								</tr>
+								<tr>
+									<td>Deathly Dagger (unrefined)</td>
+									<td>Deathly Dagger (refined)</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>Passives:</th>
+						<td class="left">
+							<table>
+								<tr>
+									<td>Poison Strike 1/2/3</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+				
+				<br><br><h2 id="chartH">Chart I: Combat Buffs and Effects That Affect Chase Targeting</h2>
+				<p>Less a chart, more a list of combat buffs and effects that have an affect on chase targeting. Assume the requirements of each skill are satisfied, unless stated otherwise to always be active.</p>
+				
+				<h3 class="tab1">Weapons</h3>
+						<p class="tab2">
+						Brave Weapons<br>
+						Alm Refined Falchion, given the requirement is satisfied<br>
+						Effective Damage Weapons<br>
+						Blade Tomes, Thunderhead, Laevatein<br>
+						Blizzard<br>
+						The Cleaner<br>
+						Niu<br>
+						Stance Weapons (e.g. Berkut's Lance, Safeguard, Sack o' Gifts, Water Breath)<br>
+						Range Sensitive Stance Skills (e.g. Blarserpent, Special Refined Ecksachs)<br>
+						Blow Weapons (e.g. Durandal, Mjolnir, Coconut Bow)<br>
+						Brazen Weapons(e.g. Sealed Falchion, Refined Folkvangr, Special Refined Ragnarok)<br>
+						Push Weapons (e.g. Unrefined Ragnarok, Beloved Zofia, Deft Harpoon, Melon Crusher)<br>
+						Dual Phase Stat Buffs (e.g. Gae Bolg, Special Refined Parthia)<br>
+						Loptous<br>
+						Shield Weapons (i.e. Breath of Blight)<br>
+						Breaker Weapons (i.e. Assassin's Bow)<br>
+						Guaranteed Follow-Up Weapons(e.g. Armads, Maltet, Garm, Hoarfrost Knife)<br>
+						Follow-Up Prevention Weapons(e.g. Great Flame, Special Refined Brynhildr, Deathly Dagger)<br>
+						Neutralize Bonus Weapons (e.g. Divine Naga, Casablanca, Special Refined Armorsmasher)<br>
+						Enemy Health Check Weapons (e.g. Regal Blade, Ivaldi, Gliepnir)<br>
+						Enemy Speed Check Weapons (e.g. Vassal's Blade, Giga Excalibur, Sylgr)<br>
+						Enemy Def/Res Check Weapons (e.g. Light Brand, Shining Bow)<br>
+						Enemy/Ally Presence Check Weapons, always active (e.g. Flame Siegmund, Swift Mulagir, Thunder Armads, Wolf Berg)<br>
+						</p>
+				<h3 class="tab1">Passives</h3>
+						<p class="tab2">
+						Blow Skills (e.g. Death Blow, Darting Blow, Swift Sparrow)<br>
+						Stance Skills (e.g. Darting Stance, Steady Stance)<br>
+						Range Sensitive Stance Skills (e.g. Close Def, Distant Def)<br>
+						Brazen Skills (e.g. Brazen Atk/Def, Brazen Atk/Spd)<br>
+						Push Skills (i.e. Atk/Spd Push)<br>
+						Solo Skills, always active (i.e. Atk/Res Solo)<br>
+						Boost Skills (e.g. Fire Boost, Wind Boost)<br>
+						Shield Skills (e.g. Svalinn's Shield, Iote's Shield, Grani's Shield, Dragonskin)<br>
+						Laws of Sacae, always active<br>
+						Guaranteed Follow-Up Skills (e.g. Quick Riposte, Bold Fighter, Follow-Up Ring, Brash Assault)<br>
+						Follow-Up Prevention Skills (e.g. Wary Fighter, Windsweep, Watersweep)<br>
+						Breaker Skills (e.g. Swordbreaker, Bowbreaker)<br>
+						Neutralize Bonus Skills (e.g. Dull Ranged, Dull Melee)<br>
+						Extra Attacks (i.e. Double Lion)<br>
+						Full Staff Damage (i.e. Wrathful Staff)<br>
+						Damage Nullification (i.e. Embla's Ward) <br>
+						Phantom Speed [only in relation to other skills that affect targeting]
+						</p>
+				<h3 class="tab1">Other</h3>
+						<p class="tab2">
+						Defense Tiles<br>
+						Ally Support (scales with distance between allies)<br>
+						</p>
+						
+				<br><br><h2 id="chartI">Chart I: Combat Buffs and Effects That Do NOT Affect Chase Targeting</h2>
+				<p>Less a chart, more a list of combat buffs and effects that have no effect on chase targeting.</p>
+				
+				<h3 class="tab1">Weapons</h3>
+						<p class="tab2">
+						Owl Weapons (e.g. Gronnowl, Nidhogg, Reese's Tome)<br>
+						Drive Sparrow Tomes (e.g. Muspell Fireposy, Nifl Frostflowers)<br>
+						Bond Weapons (e.g. Lucina/Chrom Refined Falchion, Special Refined Fensalir, Special Refined Breath of Fog)<br>
+						Special Cooldown Manipulating Weapons (as Special Activations are not accounted for)<br>
+						Wo Dao Weapons (as Special Activations are not accounted for)<br>
+						Post Combat Damage/Recoil (e.g. Deathly Dagger, Cursed Lance, Melon Crusher)
+						Post Combat Healing (e.g. Carrot Lance, Carrot Axe, Green Egg)
+						Drive Weapons (e.g. Marth Refined Falchion, Lilith Floatie, Kadomatsu)<br>
+						Special Refined Sieglinde<br>
+						Aegis Weapons (e.g. Divine Tyrfing, Thani, Special Refined Parthia)<br>
+						Deflect Weapons (i.e. Urvan)<br>
+						</p>
+				<h3 class="tab1">Passives</h3>
+						<p class="tab2">
+						Bond Skills (e.g. Atk/Def Bond, Atk/Spd Bond)<br>
+						Sorcery Blade<br>
+						Post Combat Damage/Recoil (e.g. Fury, Poison Strike)<br>
+						Post Combat Healing (i.e. Mystic Boost)
+						Spur Skills (e.g. Spur Atk, Spur Spd)<br>
+						Drive Skills (e.g. Drive Def, Drive Res)<br>
+						Goad/Ward Skills (e.g. Goad Cavalry, Ward Armors)<br>
+						Special Cooldown Manipulating Skills (as Special Activations are not accounted for)<br>
+						Range Sensitive Guard Skills (e.g. Close Guard, Distant Guard)<br>
+						Deflect Skills (e.g. Deflect Melee, Deflect Magic, Deflect Missile)<br>
+						</p>
+		
+				<br><br>
+			</main>
+		</body>
+	</html>
+	
+	<script>
+		var shukumei = new Audio('shukumei.wav');
+		shukumei.volume = 0.3;
+	</script>

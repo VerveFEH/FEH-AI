@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Mia's AI Manipulation Instructional Academy - Home</title>
+			<link rel="shortcut icon" href="favicon.ico">
+			<link rel="stylesheet" type="text/css" href="main.css">
+			<meta charset="utf-8">
+			<meta name="description" content="A guide on the AI behavior in the game Fire Emblem: Heroes">
+			<meta name="keywords" content="fire emblem heroes, ai">
+		</head>
+		
+		<body>
+			<header>
+				<h1>
+					<a><img src="Mia.png" alt="Mia" id="logo" onclick="shukumei.play()"></a>&nbsp;&nbsp;
+					Mia's AI Manipulation Instructional Academy
+				</h1>
+			</header>
+			<aside>
+				<a href="index.html">Home<br></a>
+				<a href="intro.html">Introduction<br></a>
+				<a href="textguide.html">Plain Text Guide<br></a>
+				<a href="noteguide.html">Annotated Guide<br></a>
+				<a href="charts.html">Charts<br></a>
+				<a href="glossary.html">Glossary<br></a>
+				<a href="changelog.html">Changelog<br></a>
+				<a href="JP/glossaryJP.html">日本語<br></a>
+			</aside>
+			<main>
+				<h1 style="text-align:center">Glossary</h1>
+			
+				<div id="toc_container">
+				<p class="toc_title">Charts</p>
+				<ul class="toc_list">
+					<li><a href="#section1">1. Important Concepts</a>
+						<ul class="toc_list">
+							<li><a href="#section1a">a. Slot Order</a></li>
+							<li><a href="#section1b">b. Tile Priority</a></li>
+							<li><a href="#section1c">c. Calculating Distance</a></li>
+						</ul>
+					</li>
+					<li><a href="#section2">2. Special Actions and States</a>
+						<ul class="toc_list">
+							<li><a href="#section2a">a. Offensive Movement Assist</a></li>
+							<li><a href="#section2b">b. Bodyblocking</a></li>
+							<li><a href="#section2c">c. Block Breaking</a></li>
+							<li><a href="#section2d">d. Shuffling</a></li>
+						</ul>
+					</li>
+					<li><a href="#section3">3. Positioning Tiebreakers</a>
+						<ul class="toc_list">
+							<li><a href="#section3a">a. Bodyblocking</a></li>
+							<li><a href="#section3b">b. Distance</a></li>
+							<li><a href="#section3c">c. Defense Tiles</a></li>
+							<li><a href="#section3d">d. Enemy Threat</a></li>
+							<li><a href="#section3e">e. Teleportation</a></li>
+							<li><a href="#section3f">f. Diagonal</a></li>
+							<li><a href="#section3g">g. Terrain</a></li>
+							<li><a href="#section3h">h. Movement</a></li>
+							<li><a href="#section3i">i. Tile Priority</a></li>
+						</ul>
+					</li>
+					<li><a href="#section4">4. Targeting Tiebreakers</a>
+						<ul class="toc_list">
+							<li><a href="#section4a">a. Combat Result</a></li>
+							<li><a href="#section4b">b. Debuffs Enemy</a></li>
+							<li><a href="#section4c">c. Damage Ratio</a></li>
+							<li><a href="#section4d">d, Increasing Special Charge</a></li>
+							<li><a href="#section4e">e. Threatens Enemy</a></li>
+							<li><a href="#section4f">f. Rally Efficacy</a></li>
+							<li><a href="#section4g">g. Amount Healed</a></li>
+							<li><a href="#section4h">h. Visible Stat Total</a></li>
+							<li><a href="#section4i">i. Distance</a></li>
+							<li><a href="#section4j">j. Chase Priority</a></li>
+							<li><a href="#section4l">k. Tile Priority</a></li>
+							<li><a href="#section4m">l. Slot Order</a></li>
+						</ul>
+					</li>
+					<li><a href="#section5">5. Action Priority Tiebreakers</a>
+						<ul class="toc_list">
+							<li><a href="#section5a">a. Combat Result</a></li>
+							<li><a href="#section5b">b. Debuffs Enemy</a></li>
+							<li><a href="#section5c">c. Afflicts Enemy</a></li>
+							<li><a href="#section5d">d. Damage Ratio</a></li>
+							<li><a href="#section5e">e. Movement Range</a></li>
+							<li><a href="#section5f">f. Increasing Special Charge</a></li>
+							<li><a href="#section5g">g. Weapon vs Weaponless</a></li>
+							<li><a href="#section5h">h. Distance</a></li>
+							<li><a href="#section5i">i. Assist Type</a></li>
+							<li><a href="#section5j">j. Assist vs Assistless</a></li>
+							<li><a href="#section5k">k. Melee vs. Ranged</a></li>
+							<li><a href="#section5k">l. Slot Order</a></li>
+						</ul>
+					</li>
+				</ul>
+				</div>
+				
+				</br></br><h2 id="section1"><a href="#section1">1. Important Concepts</a></h2>
+					<h3 id="section1a" class="tab1"><a href="#section1a">a. Slot Order</a></h3>
+						<p class="tab2">Slot order is the final tiebreaker for most situations where the AI must choose between multiple units. The only exception is for Offensive Movement Assists, where the tile on which the potential targets are standing are examined instead. Slot order is numbered from lowest to highest going from left to right on your team.
+						
+						<img src="images/slotorder.png" alt="slot order example">
+						
+						<br><br>In the context of the tiebreaker, lower slot number will give units the edge in movement and assist priority. Higher slot number will give the unit more priority in being targeted by both allies and enemies, and also give it the edge in attack priority.
+
+						<br><br>Enemies also have a slot order, based on the map. There is no way to tell their slot number at a glance, although in arena the enemy's deployment mirrors the player's. However, a general pattern is that Heroes have lower slot number than generic enemies in a given map. There are exceptions, of course. If you want enemy slot order info for each map, visit the <a href="https://feheroes.gamepedia.com/Main_Page">FEH Wiki</a> and search the specific map for which you info.
+						
+						<br><br> Reinforcements will always have a later slot number than units currently deployed. A unit that dies does not have its slot replaced; reinforcements will always use the last unoccupied slot. For instance, if there are 4 starting enemy units and a reinforcement appears on Turn 2, that reinforcement will be in the 5th slot.
+
+						<br><br>If there are multiple reinforcements that would be deployed in the same turn, if they share same trigger (for example, two reinforcements that appear on Turn 2, or two reinforcements from killing Legion), then they will have a pre-determined arbitrary slot order based on the map. If they do not share the same trigger (for example, one reinforcement comes from killing a red mage, while another comes from killing a blue mage), then their slot order depends on their respective deploy mechanisms. If two reinforcements result from two different kill triggers like in the previous example, then their slot order is respective to the slot order of their kill trigger targets. If two reinforcements result from a kill trigger and a turn-based trigger, then the reinforcement resulting from the kill trigger will take precedence over the turn-based one for slot order.</p>
+						
+					<br><h3 id="section1b" class="tab1"><a href="#section1b">b. Tile Priority</a></h3>
+						<p class="tab2">Tile priority is the final tiebreaker for all situations where the AI must choose between multiple tiles. Tile priority is numbered from lowest to highest starting from the bottom left corner tile of the map, going right, and wrapping back up each row. Thus the highest priority tile is at the top right corner of the map.
+						
+						<img src="images/tilepriority.png" alt="tile priority diagram">
+						
+						<br><br>An easier way to visualize the priority relation between tiles is to remember the hierarchy of: Up > Right > Left > Down. A tile that is in a higher row than another always has priority. Between tiles in the same row, the one on the right always has priority.</p>
+						
+					<br><h3 id="section1c" class="tab1"><a href="#section1c">c. Calculating Distance</a></h3>
+						<p class="tab2">Calculating distance is a function that is performed for various tiebreakers, which determines the distance from unit/tile A to unit/tile B. Distance calculation is a one-way calculation, meaning the distance from A to B is not necessarily the same as the distance from B to A. This is because distance uses the movement type of the unit related to A and factors in terrain that may hinder that movement type.
+						
+						<br><br>When calculating distance in this guide, it is actually saying to calculate the shortest distance. So when calculating distance from A to B, find the shortest path from A to B. When constructing these paths, forests are worth 2 tiles for infantry, while trenches are worth 3 tiles for cavalry. Untraversable tiles for unit A's movement type cannot be used in the path. The distance includes the tile that B occupies. This means that it is possible for there to be no path at all if B is on a tile that is unpathable for unit A. In that case, the distance is considered "undefined." All distances that are "undefined" are considered equal for the purpose of tiebreakers. Example of distance calculation from Mia to various enemies: 
+						
+						<img src="images/distance.png" alt="distance calculation diagram"></p>
+						
+					<br><h3 id="section1d" class="tab1"><a href="#section1d">d. Movement Order List</a></h3>
+						<p class="tab2">The movement order list is, importantly, the only calculation that is preserved throughout the course of a turn. Whenever an action is performed, every step is repeated from the beginning with the exception of the movement order list that is created first. Since position and distance is an important tiebreaker in the movement order list, the fact that it persists across the turn means that any change in position due to refreshes or player induced repositioning assists, or any change in distance to enemies due to movement B slot skills (i.e. Lunge) or simply due to enemies dying, all of that will have no effect on the movement order across the turn.
+						
+						<br><br>Something to note is that the movement order list is created during the first iteration of deciding an action. For the enemy AI it's synonymous to being created at the very beginning of the turn. However, for players, it is created during the first action that the player lets the AI autobattle. If the player manually performs an action, then turns on autobattle, the movement order list will be created in the context of the state of the board after that player-performed action. This means that even if the player manually performs the same exact action the AI would have performed, the movement order list could be created under a completely different context and cause the AI to behave differently than if it was turned on at the start of the turn. If the first action was performed with autobattle, then the player performs the second move, then lets autobattle take over again, the subsequent autobattle will still use the movement order list generated from the first action.</p>
+					
+				</br></br><h2 id="section2"><a href="#section2">2. Special Actions and States</a></h2>
+					<h3 id="section2a" class="tab1"><a href="#section2a">a. Offensive Movement Assist</a></h3>
+						<p class="tab2">Offensive movement assist is a special usage of movement assists only available during pre-combat, only involving Shove, Smite, Draw Back, and Reposition at the moment. Normally, movement assists are used defensively to help put an ally into less danger. However, for the offensive movement assist mode, it seeks to move an ally out of the way to make room for another ally to attack an enemy that is supposedly blocked from being attacked. This mode of behavior is rare to see, as there are many requirements for it to occur.
+						
+						<img src="videos/off_move_assist.gif" alt="offensive movement assist example gif" title="What have I told you about watching your back?"></p>
+					<h3 id="section2b" class="tab1"><a href="#section2b">b. Bodyblocking</a></h3>
+						<p class="tab2">Bodyblocking is a special mode of defensive movement assist. It looks like regular movement, since when bodyblocking, the bodyblocker never actually uses its assist. However, the bodyblocker must have a defensive assist skill equipped and be able to use that assist on the target; the action of bodyblocking simply overrides the assist usage when applicable. They also perform the action in the same phase as regular defensive assist behavior, as opposed to performing it when standard movement is performed.
+						
+						<img src="videos/bodyblocking.gif" alt="bodyblocking example gif">
+						
+						<br><br>The purpose of bodyblocking is to reduce enemy threat to an ally by blocking at least 1 enemy melee unit's path to that ally. It can almost be thought of as a more offensive version of Swap.</p>
+					<h3 id="section2c" class="tab1"><a href="#section2c">c. Block Breaking</a></h3>
+						<p class="tab2">Block breaking is a special mode of movement behavior. The unit performs an attack on a breakable block, but it occurs in the same phase as standard movement. Units will not attack blocks that are not between them and their chase target, both along the shortest paths and between the rectangular area between them. Melee units will always move as close as they can to their chase target, only breaking a block if there happens to be an eligible one while moving as close as they can. Ranged units on the other hand will generally prefer to move 1 less than as close as they can to their chase target and break an eligible block, over moving as close as they can. This is because if they simply choose to move as close as possible, they cannot break a block that might be sitting 1 space away and blocking their only path. Thus this behavior usually ensures a clear path with no random blockages, though there are exceptions of course.</p>  
+					<h3 id="section2d" class="tab1"><a href="#section2d">d. Shuffling</a></h3>
+						<p class="tab2">Shuffling is a special state which affects movement behavior. If a unit's best move is to stay still, but they are within 2 spaces from an enemy and are adjacent to an ally, then they will get the shuffle status so long as they are not a melee unit with a weapon equipped. This means that they will prefer to move rather than stay still. 
+
+						<img src="videos/shuffling.gif" alt="shuffling example gif">
+						
+						<br><br>The primary purpose of this mechanism is to reduce the chance that the unit may be blocking another unit from attacking. This behavior is more likely to be seen in weaponless units, as they are much more likely to be content by standing still.</p>
+					
+				</br></br><h2 id="section3"><a href="#section3">3. Positioning Tiebreakers</a></h2>
+					<h3 id="section3a" class="tab1"><a href="#section3a">a. Bodyblocking</a></h3>
+						<p class="tab2">A tile on which a blocker can perform bodyblocking will have priority over others. This is because despite not actually using an assist and only using movement, bodyblocking has the same priority level as a defensive movement assist.</p>
+					<h3 id="section3b" class="tab1"><a href="#section3b">b. Distance</a></h3>
+						<p class="tab2">Distance as a positioning tiebreaker is only relevant for standard movement behavior. Units will prefer to move to the tile that is lowest distance from their chase target.</p>
+					<h3 id="section3c" class="tab1"><a href="#section3c">c. Defense Tiles</a></h3>
+						<p class="tab2">Assuming all else is equal, defense tiles have priority over tiles without defense tiles when choosing position.</p>
+					<h3 id="section3d" class="tab1"><a href="#section3d">d. Enemy Threat</a></h3>
+						<p class="tab2">Assuming all else is equal, a tile with less enemy threat has priority over other tiles with more enemy threat. A tile is considered threatened by an enemy if it is in range of the combination of an enemy's movement+attack ranges. It is expressed this way because movement range is stored at the beginning of the turn, so if movement range were to change in the middle of the turn (e.g. Gravity staff), it would still calculate using the movement range stored at the beginning of the turn. It is also expressed this way because terrain movement limitations like walls and trees do affect which tiles can be threatened by an enemy, but transient limitations like breakable blocks, other units blocking certain tiles, or tiles blocked by obstruct have no affect. To a similar effect, enemy threat also does not seem to consider tiles that can only be threatened through a teleportation skill, because those tiles are not within the movement+attack range combination.</p>
+					<h3 id="section3e" class="tab1"><a href="#section3e">e. Teleportation</a></h3>
+						<p class="tab2">Assuming all else is equal, a tile that requires a teleportation to reach has priority over tiles that can be reached with standard movement. In game, these tiles are visually denoted as a lighter shade of blue when you are manually making a move. If a tile could be reached by both teleportation and by using Pivot, it is still considered a tile that requires teleportation, and Pivot will not be used if that tile is selected.
+						
+						<img src="images/teleportation.png" alt="teleportation tile diagram">
+						
+						<br>This is a table of sources of teleportation:</p>
+						<table class="tab2">
+							<tr>
+								<th>Weapons:</th>
+								<td class="left">
+									<table>
+										<tr>
+											<td>Hinoka's Spear (Special Refine)</td>
+											<td>Nóatún</td>
+										</tr>
+										<tr>
+											<td>Grimoire</td>
+											<td>Fruit of Iðunn</td>
+										</tr>
+										<tr>
+											<td>Fujin Yumi (Special Refine)</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<th>Passives:</th>
+								<td class="left">
+									<table>
+										<tr>
+											<td>Wings of Mercy 1/2/3</td>
+											<td>Escape Route 1/2/3</td>
+											<td>Flier Formation 1/2/3</td>
+										</tr>
+										<tr>
+											<td>Aerobatics 1/2/3</td>
+											<td>Guidance 1/2/3</td>
+											<td>Flier Guidance 1/2/3</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<th>Other</th>
+								<td class="left">
+									<ul>
+										<li>Rival Domains/Grand Conquest warp tiles</li>
+										<li>Grand Conquest bonus Guidance effect</li>
+									</ul>
+								</td>
+							</tr>
+						</table>
+					<h3 id="section3f" class="tab1"><a href="#section3f">f. Diagonal</a></h3>
+						<p class="tab2">This tiebreaker only exists for standard movement. Assuming all else is equal, a tile that is closer to any diagonal to the chase target has priority over other tiles. Being directly diagonal from the target has the highest priority. Distance from the diagonal is measured in absolute number of spaces away, so movement type and obstacles are not factored in.
+						<img src="images/diagonal.png"></p>
+					<h3 id="section3g" class="tab1"><a href="#section3g">g. Terrain</a></h3>
+						<p class="tab2">Assuming all else is equal, a tile with more prohibitive terrain has priority over other tiles. The hierarchy of special terrains is: flier terrain > forest > trench > regular. Flier terrain is any terrain that can only be accessed by flying units, whether it be water, mountains, lava, abyss, etc. Forests hinder infantry and prohibit cavalry, so they are next. Trenches only hinder cavalry, so they are the least prohibitive special terrain. Regular tiles have the least priority, of course.</p>
+					<h3 id="section3h" class="tab1"><a href="#section3h">h. Movement</a></h3>
+						<p class="tab2">Assuming all else is equal, a tile that requires the lowest amount of movement to reach has priority over other tiles. The only time this is not true is for standard movement if the unit has the "shuffle" status.</p>
+					<h3 id="section3i" class="tab1"><a href="#section3i">i. Tile Priority</a></h3>
+						<p class="tab2">Assuming all else is equal, a tile with the highest tile priority number has priority over other tiles. More about tile priority can be read in <a href="#section1b">Section 1b</a>.</p>
+					
+				</br></br><h2 id="section4"><a href="#section4">4. Targeting Tiebreakers</a></h2>
+					<h3 id="section4a" class="tab1"><a href="#section4a">a. Combat Result</a></h3>
+						<p class="tab2">This tiebreaker only exists for attack evaluation. Assuming all else is equal, the target that results in the best combat has priority over other targets. The three different results for combat are win, draw, and loss, whose priority is in that order. Any win is better than any draw, and any draw is better than any loss. This tiebreaker does not exist in Rival Domains or Grand Conquest, perhaps because of infinite unit spawning requiring less conservative play that usually results from this tiebreaker.</p>
+					<h3 id="section4b" class="tab1"><a href="#section4b">b. Debuffs Enemy</a></h3>
+						<p class="tab2">This tiebreaker only exists for attack evaluation. Assuming all else is equal, a target that can be debuffed by at least 2 uncombined points of def or res by a skill in <a href="charts.html#chartF">Chart F</a> has priority over other units. This means for example that if the attacker could inflict -7 def with Seal Def 3, and target 1 has no debuffs while target 2 already has a -6 def debuff, then target 1 will have priority. It doesn't matter how much def or res would be debuffed, so long as the amount reaches the threshold of 2 and the appropriate skill is equipped. Having multiple applicable skills from the chart does not increase priority. </p>
+					<h3 id="section4c" class="tab1"><a href="#section4c">c. Damage Ratio</a></h3>
+						<p class="tab2">This tiebreaker only exists for attack evaluation. Assuming all else is equal, a target that results in a better damage ratio for the attacker has priority over other targets. Damage ratio is calculated with the following formula:
+						
+						<br><br>[Net Damage Dealt]*3 - [Net Damage Taken]
+						
+						<br><br>Net damage is the change in health; that is, the difference between the health at which the unit starts combat and ends combat. If you do more damage to a unit than it has health, only the amount of health lost will be considered net damage. This also accounts for healing that may occur mid combat due to Absorb staff or certain specials. Being dealt 10 damage, but healing 10 health from Aether afterward, would be 0 net damage. Do note that heal only counts for actual HP restored; for example if Ike has 45/45 HP, is dealt 0 damage, then activates Aether, he will not heal. As such, his net damage taken is 0. 
+						
+						<br><br>This formula basically values dealing damage at 3 times the rate at which damage is being taken. So dealing 9 damage and taking 27 damage has the same exact value as dealing 0 damage while taking 0 damage. In the same vein, causing the target to heal makes that target a much lower priority. Causing the enemy to heal 10 HP (-10 net damage) has the same value as doing 0 damage and taking 30 damage.
+						
+						<br><br>AoE specials (e.g. Growing Wind) are accounted for in this formula by adding the damage dealt to the main target. Any collateral damage dealt to other targets has no bearing in the formula.</p>
+					<h3 id="section4d" class="tab1"><a href="#section4d">d. Increasing Special Charge</a></h3>
+						<p class="tab2">This tiebreaker only exists for attack evaluation. Assuming all else is equal, the target whose special charge would be increased by the end of combat has priority over other targets. At the moment this always requires expending the enemy's special activation, whether it is an offensive special or a defensive one. Simply having it activate is not enough, as the charge must be higher than it was before combat. For instance, if Lukas has 0 CD on Sacred Cowl with Killer Lance before combat and is attacked twice by a bow, it will activate then go back down to 0 CD, thus resulting in no increase to the charge and not being eligible for this tiebreaker. The amount the special charge is increased doesn't matter, so long as it is increased at all.</p>
+					<h3 id="section4e" class="tab1"><a href="#section4e">e. Threatens Enemy</a></h3>
+						<p class="tab2">This tiebreaker only exists for assist evaluation. Assuming all else is equal, the target who has the "threatens enemy" status has priority over other targets. In order to have the "threatens enemy" status, a weapon must be equipped. </p>
+					<h3 id="section4f" class="tab1"><a href="#section4f">f. Amount of stats buffed</a></h3>
+						<p class="tab2">This tiebreaker only exists for rally assist evaluation. Assuming all else is equal, the target who receives a higher amount of stat buffs from a rally has priority over other targets. For example, a target 1 has a +2 defense buff while target 2 has no buffs. If the rallier has Rally Def, then target 2 would receive +4 def from the rally, while target 1 would only receive +2, thus target 2 has higher priority. For Harsh Command, the amount of debuff that is removed is added to the amount of buff given. For example, if a unit has a -7 def debuff and a +6 def buff, Harsh Command would give that unit 8 points of stat buffs for the purpose of this tiebreaker.</p>
+					<h3 id="section4g" class="tab1"><a href="#section4g">g. Amount Healed</a></h3>
+						<p class="tab2">This tiebreaker only exists for heal assist evaluation. Assuming all else is equal, the target who receives a bigger heal has priority over other targets. The most likely scenario for this tiebreaker to matter is when at least one target is not missing enough HP to receive the full effect of a heal. Another situation is when involving the Rehabilitate staff.</p>
+					<h3 id="section4h" class="tab1"><a href="#section4h">h. Visible Stat Total</a></h3>
+						<p class="tab2">This tiebreaker only exists for assist evaluation. Assuming all else is equal, the target who has a greater visible stat total has priority over other targets. Visible stat total is the combination of atk, spd, def, and res, and does NOT include HP. Visible stat total includes stats granted by passives and factors in buffs and debuffs, but does not account for in-combat boosts such as Brazen Atk/Def or Ward Armors.</p>
+					<h3 id="section4i" class="tab1"><a href="#section4i">i. Distance</a></h3>
+						<p class="tab2">This tiebreaker only exists for rally assist evaluation. Assuming all else is equal, the target who is closer to the nearest enemy has priority over other targets.</p>
+					<h3 id="section4j" class="tab1"><a href="#section4j">j. Chase Priority</a></h3>
+						<p class="tab2">This tiebreaker only exists for movement evaluation. Chase priority number is determined through the following formula:
+						
+						<br><br>[Potential Damage Dealt] - 5 * [Turn Range]
+						
+						<br><br>Potential damage dealt means the total amount of damage that can be dealt to a target, including damage that exceeds the target's HP. It also includes doubles, even a double that would normally would not occur due to the first hit killing. All in-combat passives carried by the unit and target affect this number, such as Darting Blow or Steady Breath, while in-combat effects from other units such as Spurs and Drives do not have any effect, with the exception of ally support (don't ask me why). Skills that grant in combat bonuses based on number of nearby enemies or allies, such as Flame Siegmund, Swift Mulagir, Laws of Sacae, and Wolf Berg, seem to always have their bonus active when calculating target or being assessed as a target. Skills that affect doubles such as breaker skills or Windsweep will affect doubles for calculating this number. Special activations are not taken into consideration; neither offensive nor defensive. Damage taken by the unit is also not taken into account, purely the potential damage dealt. This means whether the target could counterattack or not has no bearing on this formula.
+						
+						<br><br>Turn range is similar to distance calculation, but with several key differences. The main aspect of turn range is that it measures the amount of turns it takes for the unit to reach the target, which scales with the movement range of the unit. For instance, a target 6 tiles away from a melee infantry unit would have a 3 turn range. If the unit was a cavalier, then that would be a 2 turn range, while for an armor it would be a 6 turn range. Effects that alter movement range such as Armor March and Gravity do effect movement range for this calculation. Unlike for distance calculation, turn range will ignore special terrain that the target is standing on.</p>
+						
+						<div class="row">
+						  <div class="column">
+							<img src="images/turnrange_meleeinf.png" alt="melee infantry turn range diagram" style="width:50%">
+						  </div>
+						  <div class="column">
+							<img src="images/turnrange_meleecav.png" alt="melee cavalry turn range diagram" style="width:50%">
+						  </div>
+						</div>
+						
+						
+						<p class="tab2">Ranged units calculate slightly differently than melee units in that they subtract 1 from the number of tiles away and get to also ignore special terrain adjacent to their target. For instance, a target 5 tiles away from a ranged infantry unit would have a 2 turn range, since 5-1=4, and 4/[2 movement range] is 2 turn range. Even if there was a mountain in front of the target, the turn range would be calculated for ranged units in this manner. Do note that while targeting can ignore adjacent terrain for ranged units, they will still move along the traversable path toward the unit. 
+						
+						<img src="images/turnrange_rangedinf.png" alt="ranged infantry turn range diagram">
+						
+						<br><br>Overall what this formula shows is that for each turn farther a target is, it needs to take 5 more damage to maintain equal value.</p>
+					<h3 id="section4k" class="tab1"><a href="#section4k">k. Terrain</a></h3>
+						<p class="tab2">This tiebreaker only exists for offensive movement assist evaluation. Assuming all else is equal, the target who is standing on a more prohibitive special terrain will have priority over other targets. As a reminder, the special terrain hierarchy is: Flier Terrain > Forest > Trench > Regular.</p>
+					<h3 id="section4l" class="tab1"><a href="#section4l">l. Tile Priority</a></h3>
+						<p class="tab2">This tiebreaker only exists for offensive movement assist evaluation. Assuming all else is equal, the target who is standing on the tile with higher priority will have priority over other targets. See <a href="#section1b">Section 1b</a> for more details on tile priority.</p>
+					<h3 id="section4m" class="tab1"><a href="#section4m">m. Slot Order</a></h3>
+						<p class="tab2">Assuming all else is equal, the target who has a higher slot number will have priority over other targets. See <a href="#section1a">Section 1a</a> for more details on slot order.</p>
+					
+				</br></br><h2 id="section5"><a href="#section5">5. Action Priority Tiebreakers</a></h2>
+					<h3 id="section5a" class="tab1"><a href="#section5a">a. Combat Result</a></h3>
+						<p class="tab2">This tiebreaker only exists for attack evaluation. Assuming all else is equal, the attacker with the best combat result will have priority over other attackers. The three different results for combat are win, draw, and loss, whose priority is in that order. Any win is better than any draw, and any draw is better than any loss.</p>
+					<h3 id="section5b" class="tab1"><a href="#section5b">b. Debuffs Enemy</a></h3>
+						<p class="tab2">This tiebreaker only exists for attack evaluation. Assuming all else is equal, the attacker with the "debuffer" status who will debuff its target by at least 2 uncombined points of def or res will have priority over other attackers. </p>
+					<h3 id="section5c" class="tab1"><a href="#section5c">c. Afflicts Enemies</a></h3>
+						<p class="tab2">This tiebreaker only exists for attack evaluation. Assuming all else is equal, the attacker with the "afflicter" status will have priority over other attackers. See <a href="charts.html#chartG">Chart G</a> for a list of miscellaneous debuff skills that give the "afflicter" status. It doesn't matter how many of these skills are equipped or how potent they are, only that the attacker his it.
+						
+						<br><br>This tiebreaker does not apply when the attackers have the loss combat result.</p>
+					<h3 id="section5d" class="tab1"><a href="#section5d">d. Damage Ratio</a></h3>
+						<p class="tab2">This tiebreaker only exists for attack evaluation. Assuming all else is equal, an attacker that has a better damage ratio against its target has priority over other attackers. Damage ratio is calculated with the following formula:
+						
+						<br><br>[Net Damage Dealt]*3 - [Net Damage Taken]
+						
+						<br><br>Net damage is health at which the unit starts combat minus the health at which the unit ends combat. This accounts for healing that may occur mid combat due to Absorb staff or certain specials. Being dealt 10 damage, but healing 10 health from Aether afterward, would be 0 net damage. Do note that heal only counts for actual HP resotred; for example if Ike has 45/45 HP, is dealt 0 damage, then activates Aether, he will not heal. As such, his net damage taken is 0. 
+						
+						<br><br>This formula basically values dealing damage at 3 times the rate at which damage is being taken. So dealing 9 damage and taking 27 damage has the same exact value as dealing 0 damage while taking 0 damage. In the same vein, causing the target to heal makes that target a much lower priority. Causing the enemy to heal 10 HP (-10 net damage) has the same value as doing 0 damage and taking 30 damage.</p>
+					<h3 id="section5e" class="tab1"><a href="#section5e">e. Movement Range</a></h3>
+						<p class="tab2">This tiebreaker only exists for attack evaluation. Assuming all else is equal, an attacker with greater movement range will have priority over other attackers. This means that cavalry will have priority over infantry and fliers, who have priority over armors. Note that effects that alter movement range such as Armor March and Gravity will be considered for movement range in this tiebreaker.</p>
+					<h3 id="section5f" class="tab1"><a href="#section5f">f. Increasing Special Charge</a></h3>
+						<p class="tab2">This tiebreaker only exists for attack evaluation. Assuming all else is equal, the attacker who would increase its target's special charge by the end of combat has priority over other attackers. At the moment this always requires expending the enemy's special activation, whether it is an offensive special or a defensive one. Simply having it activate is not enough, as the charge must be higher than it was before combat. For instance, if Lukas has 0 CD on Sacred Cowl with Killer Lance before combat and is attacked twice by a bow, it will activate then go back down to 0 CD, thus resulting in no increase to the charge and not being eligible for this tiebreaker. The amount the special charge is increased doesn't matter, so long as it is increased at all.</p>
+					<h3 id="section5g" class="tab1"><a href="#section5g">g. Weapon vs Weaponless</a></h3>
+						<p class="tab2">This tiebreaker only exists for assist evaluation and movement order list creation. For pre-combat assists, the assister with no weapon will always have priority over other assisters with weapons. For post-combat assists, assist type has priority over whether weapon is equipped.
+						
+						<br><br>For movement list creation, assuming all else is equal, a unit with a weapon will perform standard movement before a unit without a weapon.</p>
+					<h3 id="section5h" class="tab1"><a href="#section5h">h. Distance</a></h3>
+						<p class="tab2">This tiebreaker only exists for assist evaluation. Assuming all else is equal, the assister who is farthest from its closest enemy has priority over other attackers. See <a href="#section1c">Section 1c</a> for more information on calculating distance.</p>
+					<h3 id="section5i" class="tab1"><a href="#section5i">i. Non-Movement Assist Type</a></h3>
+						<p class="tab2">This tiebreaker only exists for non-movement assist evaluation. For pre-combat assists, assuming all else is equal, Refresh > Restore > Heal = Rally. For post-combat assists, it is always the case that Refresh > Restore > Heal > Rally > Defensive Movement Assist.</p>
+					<h3 id="section5j" class="tab1"><a href="#section5j">j. Assist vs Assistless</a></h3>
+						<p class="tab2">This tiebreaker only exists for movement order list creation. A unit with no assist will always perform standard movement before a unit with an assist.</p>
+					<h3 id="section5k" class="tab1"><a href="#section5k">k. Melee vs Ranged</a></h3>
+						<p class="tab2">This tiebreaker only exists for movement order list creation. A unit with a melee attack will always perform standard movement before a unit with a ranged attack. A unit with no weapon will perform standard movement after both melee and ranged attacks.</p>
+					<h3 id="section5l" class="tab1"><a href="#section5l">l. Slot Order</a></h3>
+						<p class="tab2">Assuming all else is equal, the attacker who has a higher slot number will have priority over other attacker. See <a href="#section1a">Section 1a</a> for more details on slot order.</p>
+
+					<br><br>
+			</main>
+		</body>
+	</html>
+	
+	<script>
+		var shukumei = new Audio('shukumei.wav');
+		shukumei.volume = 0.3;		
+	</script>

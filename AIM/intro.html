@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Mia's AIM Instructional Academy - Introduction</title>
+			<link rel="shortcut icon" href="favicon.ico">
+			<link rel="stylesheet" type="text/css" href="main.css">
+			<meta charset="utf-8">
+			<meta name="description" content="A guide on the AI behavior in the game Fire Emblem: Heroes">
+			<meta name="keywords" content="fire emblem heroes, ai">
+		</head>
+		
+		<body>
+			<header>
+				<h1>
+					<a><img src="Mia.png" alt="Mia" id="logo" onclick="shukumei.play()"></a>&nbsp;&nbsp;
+					Mia's AI Manipulation Instructional Academy
+				</h1>
+			</header>
+			<aside>
+				<a href="index.html">Home<br></a>
+				<a href="intro.html">Introduction<br></a>
+				<a href="textguide.html">Plain Text Guide<br></a>
+				<a href="noteguide.html">Annotated Guide<br></a>
+				<a href="charts.html">Charts<br></a>
+				<a href="glossary.html">Glossary<br></a>
+				<a href="changelog.html">Changelog<br></a>
+				<a href="JP/introJP.html">日本語<br></a>
+			</aside>
+			<main>
+				<h1 style="text-align:center">Introduction</h1>
+
+				<p>Hi, welcome to an introduction to the anatomy of a turn... as it looks for the FEH AI! I will try to keep this light and relatively easy to digest. Illustrated charts are still being made, look forward to it!
+				
+				<br><br>The first thing I would like to do is go over the different type of actions that AI can perform. They are: movement, attack, pre-combat assist, and post-combat assist. Movement refers to most instances of a unit moving without performing any attacks or assists. There are a few exceptions to this, which you may find later. An attack refers to a unit performing an attack on an enemy unit. A pre-combat assist is an assist that is performed while there is at least one possible attack to be made by the team. A post-combat assist is an assist that is performed while there are no attacks that could be made by the team.
+				
+				<br><br>The next thing to go over is the steps to evaluating each of these actions. There are three steps, which are: positioning, targeting, order. These steps are always performed sequentially, with the exception of movement, where it is actually reversed. In the positioning step, a unit looks at all possible positions to perform its action on each potential target, then chooses the optimal tile for each target. In the targeting step, the unit chooses the best target. It's very important to note that the positioning step occurs before this step because the tile that is chosen may affect the targeting step for attacks. The last step is order, where the priority between multiple units who want to perform the same type of action is decided. Again, for movement, the sequence of these steps are reversed, such that the order is first, then the unit chooses a target, and then decides the position to which to move.
+				
+				<br><br>The very last thing to go over is that while this is about the "anatomy of a turn," it is actually more accurately about the "anatomy of deciding an action." This is because the turn for an AI mainly consists of deciding actions until there are no actions left to perform, such that they repeat a checklist of steps over and over. There is one exception to this, which is the very first step, so that's why I have still called this the "anatomy of a turn" since the first step is still important.
+				
+				<br><br>Anyway, without further ado, the very first step that the AI performs is creating a "movement order list". This list is what determines which units get to move in what order during the movement phase. The movement phase is actually the very last step in deciding an action, but it is the first thing that happens, and importantly this list PERSISTS until the end of the turn. Every single other state and calculation that is recorded in each following step will reset after an action is performed, but the movement order list will not. Again, this is very important to note.
+				
+				<br><br>The second step is for the AI to assess threaten and threatened states for each unit. This state is used in later steps, namely eligibility requirements for certain assists.
+				
+				<br><br>The third step is for AI to perform the first step of attack evaluation: position. The main point of only performing this step is to gauge attackers' combat results to see if they are eligible for pre-combat assists in the next step.
+				
+				<br><br>The fourth step is for the AI to evaluate pre-combat assists. It is a requirement for most assists that the unit cannot deal more than 5 damage to any enemy (or otherwise score a kill) if they want to be eligible for pre-combat assists. Position, targeting, and order are all evaluated; the one with highest priority will be used at the end of this step. If it is, all states except for the movement order list are wiped clean and the process begins again from step 2.
+				
+				<br><br>The fifth step is for the AI to finish evaluating attacks, such that the attackers will finally decide targets and order. The attacker with the highest priority will attack at the end of the step, after which would lead to starting back at step 2 again on a clean slate. Do note that so long as there is at least one attack that can be made, an attack will be made. The AI can't skip out of attacking no matter how bad the results are (there will be no pre-combat assists left, which is required to reach this step).
+				
+				<br><br>The sixth step is for the AI to evaluate post-combat assists. As the name implies, the only way to reach this point is if there are no attacks that can be made by the team. There are some different, generally more lenient eligibility requirements for units and their targets for post-combat assists. The same steps of position, targeting, and order are all evaluated, then the best is used. If it is, all states except for, again, the movement order list are wiped clean the process begins again from step 2.
+				
+				<br><br>The seventh step is for the AI to finally evaluate movement. Remember that for movement, the evaluation steps are reversed, such that they are order, target, then position. Order was already determined in step 1, so then target and positions are decided here. The relevance of the movement order list being preserved across the turn is that any changes in position of any ally or enemy in the middle of the turn will have no effect on their movement order when they get to it. This includes being in a totally different location for your action due to being danced or being refreshed by Galeforce, or perhaps being less close to enemies after one of them died in the middle of the turn. Anyway, after deciding target and position, the unit will move, unless their best movement is to stand still. In that case, they get the "pass" status, and repeat this seventh step, and the next person on the movement order list with an action and without the "pass" status gets to evaluate their movement. If a unit passes and another unit does make a move, remember that all states become reset including the recently acquired "pass" state, as step 2 begins anew. If every unit in the movement order list with an action has the "pass" status, then the step ends.
+				
+				<br><br>The eighth step is the ceremonial end turn step. And that's it! That's the basic anatomy of a turn, or more aptly, anatomy of deciding an action. The movement order list only persists throughout the course of a turn, so it is reset at this point.</p>
+				
+				<br><br>
+			</main>
+		</body>
+	</html>
+	
+	<script>
+		var shukumei = new Audio('shukumei.wav');
+		shukumei.volume = 0.3;
+
+	</script>
