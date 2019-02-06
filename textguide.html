@@ -35,8 +35,8 @@
 				
 				<p class="bigger" id="step1">I. Evaluate and store turn-wide states:</p>
 					<p class="tab1">A. Only if it is the first time evaluating this step this turn:<p>
-						<p class="tab2">1. For each unit, grant "pass" status if it has a skill that allows movement through enemies, and the requirements of the skill is met
-						<br>2. For each unit with "pass" status, create an Obstacle Location List, storing the location of all tiles that are occupied by enemies or breakable blocks</p>
+						<p class="tab2">1. For each enemy unit, grant "pass" status if it has a skill that allows movement through enemies, and the requirements of the skill is met
+						<br>2. Create an Obstacle Location List, storing the location of all tiles that are occupied by enemies</p>
 					<p class="tab1">B. Create Movement Order List, using these tiebreaks:</p>
 						<p class="tab2">1. Have assist: N > Y 
 						<br>2. Attack type: Melee > Ranged > Weaponless
@@ -120,7 +120,7 @@
 						<br>5. Movement range: highest #
 						<br>6. Target's special charge increased: Y > N
 						<br>7. Slot order: highest #</p>
-					<p class="tab1">F. Best attacker attacks its best target from the optimal tile. For each unit with the "pass" status, check each tile on their Obstacle Location List (step I.A.2); if a tile no longer has an enemy or breakable block occupying it, remove that tile from the Obstacle Location List. Clear all states except for those from Step I and return to <a href="#step2">Step II [Assess Threats]</a></p><br>
+					<p class="tab1">F. Best attacker attacks its best target from the optimal tile. If an enemy was defeated OR if an enemy's location was displaced (i.e. drag back, lunge), for each unit with the "pass" status, check if their skill granting "pass" is still active; if not, remove "pass" status from that unit. In addition, for each tile in the Obstacle Location List (step I.A.2), if there is no longer an enemy occupying it, remove that tile from the Obstacle Location List. Clear all states except for those from Step I and return to <a href="#step2">Step II [Assess Threats]</a></p><br>
 					
 				<p class="bigger" id="step6">VI. Evaluate Post-Combat Assists:</p>
 					<p class="tab1">A. Add each unit with action with assist equipped to the assist list
