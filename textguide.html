@@ -122,7 +122,7 @@
 						<br>5. Movement range: highest #
 						<br>6. Target's special charge increased: Y > N
 						<br>7. Slot order: highest #</p>
-					<p class="tab1">F. Best attacker attacks its best target from the optimal tile. If an enemy was defeated OR if an enemy's location was displaced (i.e. drag back, lunge), for each unit with the "pass" status, check if their skill granting "pass" is still active; if not, remove "pass" status from that unit. In addition, for each tile in each Obstacle List (step I.A.2-3), if there is no longer an ally or enemy occupying it, remove that tile from the respective Obstacle List. Clear all states except for those from Step I and return to <a href="#step2">Step II [Assess Threats]</a></p><br>
+					<p class="tab1">F. Best attacker attacks its best target from the optimal tile. If an enemy was defeated OR if an enemy's location was displaced (i.e. drag back, lunge), for each unit with the "pass" status, check if their skill granting "pass" is still active; if not, remove "pass" status from that unit. In addition, for each tile in each Obstacle List (step I.A.2-4), if there is no longer an ally, enemy, or block occupying it, remove that tile from the respective Obstacle List. Clear all states except for those from Step I and return to <a href="#step2">Step II [Assess Threats]</a></p><br>
 					
 				<p class="bigger" id="step6">VI. Evaluate Post-Combat Assists:</p>
 					<p class="tab1">A. Add each unit with action with assist equipped to the assist list
@@ -167,14 +167,14 @@
 					
 				<p class="bigger" id="step7">VII. Evaluate Movement:</p>
 					<p class="tab1">A. If all units with actions have "cede move" status, skip to <a href="#step8">Step VIII [End Turn]</a>
-					<br>B. For first unit on movement order list with action and no "cede move" status, if not melee with weapon, is adjacent to an ally, and is within 2 tiles from an enemy, then that unit gains the "shuffle" status. </p>
-					<p class="tab1">C. For first unit on movement order list with action and no "cede move" status, if it has a weapon equipped, determine enemy target using the following tiebreaks:</p>
+					<br>B. For first unit on movement order list with action and no "cede move" status, if not melee with weapon, is adjacent to an ally, and is within 2 tiles from an enemy, then that unit gains the "shuffle" status.
+					<br>C. For first unit on movement order list with action and no "cede move" status, if it has a weapon equipped, determine enemy target using the following tiebreaks:</p>
 						<p class="tab2">1. Chase priority value: highest # (see Glossary 4.J)
 						<br>2. Slot order: highest #</p>
 					<p class="tab1">D. If no target was able to be determined from previous step (whether due to no weapon or no target), if all allies have a defined distance, determine ally to target using the following tiebreakers:</p>
 						<p class="tab2">1. Distance: lowest #
 						<br>2. Slot order: highest #</p>
-					<p class="tab">E. If no target was able to be determined from either step C or step D, unit gains "cede move" status; repeat <a href="#step7">Step VII [Evaluate Movement]</a></p>
+					<p class="tab1">E. If no target was able to be determined from either step C or step D, unit gains "cede move" status; repeat <a href="#step7">Step VII [Evaluate Movement]</a></p>
 					<p class="tab1">F. If unit has "shuffle" status, determine that best tile to move using the following tiebreaks:</p>
 						<p class="tab2">1. Standing still: N > Y
 						<br>2. Distance to target: lowest #
