@@ -37,7 +37,8 @@
 					<p class="tab1">A. Only if it is the first time evaluating this step this turn:<p>
 						<p class="tab2">1. For each unit, grant "pass" status if it has a skill that allows movement through foe's spaces, and the requirements of the skill is met
 						<br>2. Create an Ally Obstacle List (used by enemies), storing the location of all tiles that are occupied by allies
-						<br>3. Create an Enemy Obstacle List (used by allies), storing the location of all tiles that are occupied by enemies</p>
+						<br>3. Create an Enemy Obstacle List (used by allies), storing the location of all tiles that are occupied by enemies
+						<br>4. Create a Block Obstacle List (used by both sides), storing the location of all tiles that have blocks</p>
 					<p class="tab1">B. Create Movement Order List, using these tiebreaks:</p>
 						<p class="tab2">1. Have assist: N > Y 
 						<br>2. Attack type: Melee > Ranged > Weaponless
@@ -48,7 +49,7 @@
 				<p class="bigger" id="step2">II. Assess Threats:</p>
 					<p class="tab1">A. If no units have actions, skip to <a href="#step8">Step VIII [End Turn]</a>
 					<br>B. For each unit with a weapon equipped, give "threatens enemy" status if at least 1 enemy is in unit's threat range (based on unit's movement stored from step I.C)
-					<br>C. For each unit, give "threatened by enemy" status if unit is in at least 1 enemy's threat range. Calculate threat range of each enemy based on enemy's movement range (step I.B), or if an enemy has the "pass" status, use current movement range and factor in obstacles from their respective Obstacle List (step I.A.2-3)</p><br>
+					<br>C. For each unit, give "threatened by enemy" status if unit is in at least 1 enemy's threat range. Calculate threat range of each enemy based on enemy's movement range (step I.B) and accounting for blocks based on the Block Obstacle List (step I.A.4), or if an enemy has the "pass" status, use current movement range and factor in obstacles from their respective foes' Obstacle List and the Block Obstacle List(step I.A.2-4)</p><br>
 					
 				<p class="bigger" id="step3">III. Calculate Combat Results:</p>
 					<p class="tab1">A. Create attacker list containing each unit with action that has the "threatens enemy" status; if list is empty, skip to <a href="#step6">Step VI [Evaluate Post-Combat Assists]</a>
@@ -83,9 +84,9 @@
 					<p class="tab1">H. For each assister with non-movement assist, determine best target to assist using these tiebreaks:</p>
 						<p class="tab2">1. Has "threatens enemy" status: Y > N (refreshers/ralliers only)
 						<br>2. Rally efficacy: highest # (ralliers only)
-						<br>3. Amount healed: highest # (healers only)					
+						<br>3. Amount healed: highest # (healers only)
 						<br>4. Distance from closest enemy: lowest # (ralliers only)
-						<br>5. Visible stat total: highest # (excludes: restorers)
+						<br>5. Visible stat total: highest # (excludes: cleansers)
 						<br>6. Slot order: highest #</p>
 					<p class="tab1">I. If assister is using "Rally Up," choose target that's within 2 spaces of target chosen in step H to assist using these tiebreaks:</p>
 						<p class="tab2">1. Eligible target in step E but was not chosen in step H: N > Y
@@ -146,7 +147,7 @@
 						<p class="tab2">1. Amount healed: highest # (healers only)
 						<br>2. Rally efficacy: highest # (ralliers only)
 						<br>3. Distance from closest enemy: lowest # (ralliers only)
-						<br>4. Visible stat total: highest # (excludes: restorer)
+						<br>4. Visible stat total: highest # (excludes: cleanser)
 						<br>5. Slot order: highest #</p>
 					<p class="tab1">I. If assister is using "Rally Up," choose target that's within 2 spaces of target chosen in step H to assist using these tiebreaks:</p>
 						<p class="tab2">1. Eligible target in step C but was not chosen in step H: N > Y
@@ -165,17 +166,16 @@
 					<p class="tab1">L. Best assister uses its assist on its best target from the optimal tile; clear all states except for those from Step I and return to <a href="#step2">Step II [Assess Threats]</a></p><br>
 					
 				<p class="bigger" id="step7">VII. Evaluate Movement:</p>
-					<p class="tab1">A. If all units with actions have "no action" status, skip to <a href="#step8">Step VIII [End Turn]</a>
-					<br>B. For first unit on movement order list with action and no "no action" status, if not melee with weapon, is adjacent to an ally, and is within 2 tiles from an enemy, then that unit gains the "shuffle" status. </p>
-					<p class="tab1">C. If current tile is best tile, unit gains "no action" status; repeat <a href="#step7">Step VII [Evaluate Movement]</a>
-					<br>D. If best tile was determined from step B, unit moves to the best tile; clear all states except for the movement order list from Step I and return to <a href="#step2">Step II [Assess Threats]</a>
-					<br>E. For first unit on movement order list with action and no "no action" status, if it has a weapon equipped, determine enemy target using the following tiebreaks:</p>
+					<p class="tab1">A. If all units with actions have "cede move" status, skip to <a href="#step8">Step VIII [End Turn]</a>
+					<br>B. For first unit on movement order list with action and no "cede move" status, if not melee with weapon, is adjacent to an ally, and is within 2 tiles from an enemy, then that unit gains the "shuffle" status. </p>
+					<p class="tab1">C. For first unit on movement order list with action and no "cede move" status, if it has a weapon equipped, determine enemy target using the following tiebreaks:</p>
 						<p class="tab2">1. Chase priority value: highest # (see Glossary 4.J)
 						<br>2. Slot order: highest #</p>
-					<p class="tab1">F. If no target was able to be determined from previous step, if all allies have a defined distance, determine ally to target using the following tiebreakers:</p>
+					<p class="tab1">D. If no target was able to be determined from previous step (whether due to no weapon or no target), if all allies have a defined distance, determine ally to target using the following tiebreakers:</p>
 						<p class="tab2">1. Distance: lowest #
 						<br>2. Slot order: highest #</p>
-					<p class="tab1">G. If unit has "shuffle" status, determine that best tile to move using the following tiebreaks:</p>
+					<p class="tab">E. If no target was able to be determined from either step C or step D, unit gains "cede move" status; repeat <a href="#step7">Step VII [Evaluate Movement]</a></p>
+					<p class="tab1">F. If unit has "shuffle" status, determine that best tile to move using the following tiebreaks:</p>
 						<p class="tab2">1. Standing still: N > Y
 						<br>2. Distance to target: lowest #
 						<br>3. Defense tile: Y > N
@@ -183,7 +183,7 @@
 						<br>5. Requires teleportation: Y > N
 						<br>6. Special terrain: Flier Terrain > Forest > Trench > Regular
 						<br>7. Tile priority value: highest #</p>
-					<p class="tab1">H. Determine best tile to move to using the following tiebreaks: (SPECIAL NOTE: if enemy cannot be pathed to, unit paths toward first adjacent tile according to tile priority if melee. If ranged, unit first checks for adjacent tiles, then tiles up to 1 space away, according to tile priority. This only applies to chasing enemies.)</p>
+					<p class="tab1">G. Determine best tile to move to using the following tiebreaks: (SPECIAL NOTE: if enemy cannot be pathed to, unit paths toward first adjacent tile according to tile priority if melee. If ranged, unit first checks for adjacent tiles, then tiles up to 1 space away, according to tile priority. This only applies to chasing enemies.)</p>
 						<p class="tab2">1. Distance from target: lowest #
 						<br>2. Defense tile: Y > N
 						<br>3. Enemy threat: lowest #
@@ -192,43 +192,43 @@
 						<br>6. Special terrain: Flier Terrain > Forest > Trench > Regular
 						<br>7. Movement required: lowest # (non-shuffle status)
 						<br>8. Tile priority value: highest # </p>
-					<p class="tab1">J. Create a list of eligible blocks to be broken that satisfy the following condition:</p>
-						<p class="tab2">-Distance of block to target (using unit's movement) < distance of best tile from Step H to target</p>
-					<p class="tab1">K. If unit is already standing on optimal movement tile in step H, and there exists at least one eligible block in step J, return to step H and re-evaluate optimal movement tile, disqualifying unit's current tile as an option.</p>
-					<p class="tab1">L. For each eligible block from step J, choose optimal tile from which to attack each block using the following tiebreaks:</p>
+					<p class="tab1">H. Create a list of eligible blocks to be broken that satisfy the following condition:</p>
+						<p class="tab2">-Distance of block to target (using unit's movement) < distance of best tile from step G to target</p>
+					<p class="tab1">I. If unit is already standing on optimal movement tile in step G, and there exists at least one eligible block in step H, return to step G and re-evaluate optimal movement tile, disqualifying unit's current tile as an option.</p>
+					<p class="tab1">J. For each eligible block from step H, choose optimal tile from which to attack each block using the following tiebreaks:</p>
 						<p class="tab2">1. Defense tile: Y > N
 						<br>2. Enemy threat: lowest #
 						<br>3. Requires teleportation: Y > N
 						<br>4. Special terrain: Flier Terrain > Forest > Trench > Regular
 						<br>5. Movement required: lowest #
 						<br>6. Tile priority value: highest #</p>
-					<p class="tab1">M. If there is at least one eligible block, choose and break the best block using the following tiebreaks:</p>
-						<p class="tab2">1. Distance from best tile from Step H: lowest #
+					<p class="tab1">K. If there is at least one eligible block, choose and break the best block using the following tiebreaks:</p>
+						<p class="tab2">1. Distance from best tile from step G: lowest #
 						<br>2. Optimal attack tile is defense tile: Y > N
 						<br>3. Optimal attack tile's enemy threat: lowest #
 						<br>4. Tile priority value: highest #</p>
-					<p class="tab1">N. If a block was broken from Step M, clear all states except for those from Step I and return to <a href="#step2">Step II [Assess Threats]</a>
-					<p class="tab1">O. If unit has Pivot, determine best Pivot tile using the following tiebreaks:</p>
+					<p class="tab1">L. If a block was broken from Step M, clear all states except for those from Step I and return to <a href="#step2">Step II [Assess Threats]</a>
+					<p class="tab1">M. If unit has Pivot, determine best Pivot tile using the following tiebreaks:</p>
 						<p class="tab2">1. Distance from target: lowest#
 						<br>2. Defense tile: Y > N
 						<br>3. Enemy threat: lowest #
 						<br>4. Tile priority value, based on tile from which Pivot is being used: highest #</p>
-					<p class="tab1">P. If unit has Pivot, determine which between best tile from step H and best Pivot tile from step L is the optimal move using the following tiebreaks:
+					<p class="tab1">N. If unit has Pivot, determine which between best tile from step G and best Pivot tile from step L is the optimal move using the following tiebreaks:
 						<p class="tab2">1. Distance from target: lowest#
 						<br>2. Defense tile: Y > N
 						<br>3. Enemy threat: lowest #
 						<br>4. Requires teleportation: Y > N (not applicable to Pivot)
 						<br>5. Requires Pivot: N > Y</p>
-					<p class="tab1">Q. If unit has Rally assist, create list of eligible assist targets adjacent to best tile according to <a href="charts.html#chartA">Chart E</a> and choose best target to assist using the following tiebreaks</p>
+					<p class="tab1">O. If unit has Rally assist, create list of eligible assist targets adjacent to best tile according to <a href="charts.html#chartA">Chart E</a> and choose best target to assist using the following tiebreaks</p>
 						<p class="tab2">1. Rally efficacy: highest #					
 						<br>2. Distance from closest enemy: lowest #
 						<br>3. Visible stat total: highest #
 						<br>4. Slot order: highest #</p>
-					<p class="tab1">R. If assister is using "Rally Up," choose target that's within 2 spaces of target chosen in step P to assist using these tiebreaks:</p>
+					<p class="tab1">P. If assister is using "Rally Up," choose target that's within 2 spaces of target chosen in step P to assist using these tiebreaks:</p>
 						<p class="tab2">1. Eligible target in step P but was not chosen: N > Y
 						<br>2. Slot order: highest #</p>
-					<p class="tab1">S. If current tile is the best tile, unit gains "no action" status; repeat <a href="#step7">Step VII [Evaluate Movement]</a>
-					<br>S. Unit moves to the best tile/Pivot tile; clear all states except for those from Step I and return to <a href="#step2">Step II [Assess Threats]</a></p><br>
+					<p class="tab1">Q. If current tile is the best tile, unit gains "cede move" status; repeat <a href="#step7">Step VII [Evaluate Movement]</a>
+					<br>R. Unit moves to the best tile/Pivot tile; clear all states except for those from Step I and return to <a href="#step2">Step II [Assess Threats]</a></p><br>
 					
 				<p class="bigger" id="step8">VIII. End Turn</p>
 				
