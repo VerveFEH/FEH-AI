@@ -90,14 +90,10 @@
 								<tr>
 									<td>Rehabilitate</td>
 									<td>Rehabilitate+</td>
-									<td>Restore</td>
-								</tr>
-								<tr>
-									<td>Restore+</td>
 									<td>Sacrifice</td>
-									<td>Ardent Sacrifice</td>
 								</tr>
 								<tr>
+									<td>Ardent Sacrifice</td>
 									<td>Reciprocal Aid</td>
 								</tr>
 							</table>
@@ -111,7 +107,7 @@
 						</td>
 					</tr>
 					<tr>
-						<th>Cleanse</th>
+						<th>Restore</th>
 						<td class="left">
 							<table>
 								<tr><td>Restore</td></tr>
@@ -121,7 +117,6 @@
 						<td class="left">
 							<ul>
 								<li>Has no combat resulting in a win</li>
-								<li>Must not have any eligible targets for pre-combat heal</li>
 							</ul>
 						</td>
 					</tr>
@@ -232,14 +227,10 @@
 								<tr>
 									<td>Rehabilitate</td>
 									<td>Rehabilitate+</td>
-									<td>Restore</td>
-								</tr>
-								<tr>
-									<td>Restore+</td>
 									<td>Sacrifice</td>
-									<td>Ardent Sacrifice</td>
 								</tr>
 								<tr>
+									<td>Ardent Sacrifice</td>
 									<td>Reciprocal Aid</td>
 								</tr>
 							</table>
@@ -247,12 +238,11 @@
 						<td class="left">
 							<ul>
 								<li>Is missing and can be healed by at least a certain amount of HP, according to assist being used (see <a href="#chartF">Chart F</a>)</li>
-								<li>If receiving heal from Restore, must not be affected by any debuff</li>
 							</ul>
 						</td>
 					</tr>
 					<tr>
-						<th>Cleanse</th>
+						<th>Restore</th>
 						<td class="left">
 							<table>
 								<tr><td>Restore</td></tr>
@@ -261,7 +251,8 @@
 						</td>
 						<td class="left">
 							<ul>
-								<li>Must be affected by a debuff</li>
+								<li>Either: must be affected by a debuff</li>
+								<li>Or: is missing and can be healed by at least a certain amount of HP, according to <a href="#chartF">Chart F</a></li>
 							</ul>
 						</td>
 					</tr>
@@ -374,16 +365,13 @@
 									<td>Martyr+</td>
 								</tr>
 								<tr>
+								<tr>
 									<td>Rehabilitate</td>
 									<td>Rehabilitate+</td>
-									<td>Restore</td>
-								</tr>
-								<tr>
-									<td>Restore+</td>
 									<td>Sacrifice</td>
-									<td>Ardent Sacrifice</td>
 								</tr>
 								<tr>
+									<td>Ardent Sacrifice</td>
 									<td>Reciprocal Aid</td>
 								</tr>
 							</table>
@@ -395,7 +383,7 @@
 						</td>
 					</tr>
 					<tr>
-						<th>Cleanse</th>
+						<th>Restore</th>
 						<td class="left">
 							<table>
 								<tr><td>Restore</td></tr>
@@ -404,8 +392,7 @@
 						</td>
 						<td class="left">
 							<ul>
-								<li>Must have no targets that satisfy both: 1. can be healed by at least 8, 2. is not affected by a debuff </li>
-								<li>Must have at least one target that has a debuff</li>
+								<li>No additional requirements</li>
 							</ul>
 						</td>
 					</tr>
@@ -521,14 +508,10 @@
 								<tr>
 									<td>Rehabilitate</td>
 									<td>Rehabilitate+</td>
-									<td>Restore</td>
-								</tr>
-								<tr>
-									<td>Restore+</td>
 									<td>Sacrifice</td>
-									<td>Ardent Sacrifice</td>
 								</tr>
 								<tr>
+									<td>Ardent Sacrifice</td>
 									<td>Reciprocal Aid</td>
 								</tr>
 							</table>
@@ -540,7 +523,7 @@
 						</td>
 					</tr>
 					<tr>
-						<th>Cleanse</th>
+						<th>Restore</th>
 						<td class="left">
 							<table>
 								<tr><td>Restore</td></tr>
@@ -549,7 +532,7 @@
 						</td>
 						<td class="left">
 							<ul>
-								<li>Must be affected by a debuff</li>
+								<li>No additional requirements</li>
 							</ul>
 						</td>
 					</tr>
@@ -679,7 +662,8 @@
 				</table>
 				
 				<br><br><h2 id="chartF">Chart F: Pre-Combat Heal Thresholds</h2>
-				<p>This chart shows the amount of health required to be restored by the various healing assists in order to be considered as a target for pre-combat healing.</p>
+				<p>There are two charts related to pre-combat healing eligibility. The first shows the minimum amount of health required to be restored to a target by a healing assist in order to be considered for pre-combat healing. The second shows, in the case that the heal does not meet the threshold of the first chart, how much maximum health (or lower) the target must have according to the amount of health able to be healed.</p>
+				<h3>Guaranteed Pre-Combat Heal Threshold</h3>
 				<table>
 					<tr>
 					<thead>
@@ -758,6 +742,88 @@
 											<span class="tooltiptext">Amount of HP healed must equal amount of HP lost</span>
 										</div>
 									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+				<p>NOTE: Restore threshold only matters when targeting a unit with no debuff.</p>
+
+				<h3>Pre-Combat Heal Eligibility by Heal Amount</h3>
+				<p><i>Example: Maria has Physic staff, which heals up to 8 HP. There is a level 1 Felicia with 6/14 HP, and a level 40 Felicia with 28/34 HP. Both can be healed by 6 HP, which is not enough to guarantee pre-combat heal from the previous chart. For a heal amount of 6, a target must otherwise have 20 or less Max HP. So the level 1 Felicia is eligible for pre-combat heal, while the level 40 Felicia is ineligible.</i></p>
+				<table>
+					<tr>
+					<thead>
+						<th>Heal Amount</th>
+						<th>Max HP less than or equal to</th>
+					</thead>
+					</tr>
+					<tr>
+						<th>4</th>
+						<td class="left">
+							<table>
+								<tr>
+									<td>13</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>5</th>
+						<td class="left">
+							<table>
+								<tr>
+									<td>16</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>6</th>
+						<td class="left">
+							<table>
+								<tr>
+									<td>20</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>7</th>
+						<td class="left">
+							<table>
+								<tr>
+									<td>23</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>8</th>
+						<td class="left">
+							<table>
+								<tr>
+									<td>26</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>9</th>
+						<td class="left">
+							<table>
+								<tr>
+									<td>30</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>10</th>
+						<td class="left">
+							<table>
+								<tr>
+									<td>∞</td>
 								</tr>
 							</table>
 						</td>

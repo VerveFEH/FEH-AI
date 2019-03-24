@@ -39,7 +39,7 @@
 						<br>2. Create an Ally Obstacle List (used by enemies), storing the location of all tiles that are occupied by allies
 						<br>3. Create an Enemy Obstacle List (used by allies), storing the location of all tiles that are occupied by enemies
 						<br>4. Create a Block Obstacle List (used by both sides), storing the location of all tiles that have blocks</p>
-					<p class="tab1">B. Create Movement Order List, using these tiebreaks:</p>
+					<p class="tab1">B. Create Movement Order List using these tiebreaks:</p>
 						<p class="tab2">1. Have assist: N > Y 
 						<br>2. Attack type: Melee > Ranged > Weaponless
 						<br>3. Distance to closest enemy: lowest #
@@ -54,7 +54,7 @@
 				<p class="bigger" id="step3">III. Calculate Combat Results:</p>
 					<p class="tab1">A. Create attacker list containing each unit with action that has the "threatens enemy" status; if list is empty, skip to <a href="#step6">Step VI [Evaluate Post-Combat Assists]</a>
 					<br>B. For each attacker in the list, populate a target list containing each enemy that can be attacked; remove each attacker with no attackble targets and if list is empty, skip to <a href="#step4">Step IV [Evaluate Pre-Combat Assists]</a>
-					<br>C. For each target in each list, determine the optimal tile from which to attack, using these tiebreaks:</p>
+					<br>C. For each target in each list, determine the optimal tile from which to attack using these tiebreaks:</p>
 						<p class="tab2">1. Defense tile: Y > N
 						<br>2. Enemy threat: lowest #
 						<br>3. Requires teleportation: Y > N
@@ -69,52 +69,57 @@
 					<br>C. For each assister on the list, populate a target list with each ally its assist can be used on
 					<br>D. Check each target's pre-combat eligibility using <a href="charts.html#chartB">Chart B</a>
 					<br>E. Remove ineligible targets from each assister's target list and remove assisters with no targets from assist list; if assist list is empty, skip to <a href="#step5">Step V [Evaluate Attacks]</a>
-					<br>F. For each target for each assister with non-movement assist, determine the optimal tile from which to assist the target, using these tiebreaks:</p>
+					<br>F. For each target for each assister with non-movement assist, determine the optimal tile from which to assist the target using these tiebreaks:</p>
 						<p class="tab2">1. Defense tile: Y > N
 						<br>2. Enemy threat: lowest #
 						<br>3. Requires teleportation: Y > N
 						<br>4. Special terrain: Flier Terrain > Forest > Trench > Regular
 						<br>5. Movement required: lowest #
 						<br>6. Tile priority value: highest #</p>
-					<p class="tab1">G. For each target for each assister with movement assist, determine the optimal tile from which to assist the target, using these tiebreaks:</p>
+					<p class="tab1">G. For each target for each assister with movement assist, determine the optimal tile from which to assist the target using these tiebreaks:</p>
 						<p class="tab2">1. Enemy threat: lowest # (special note for Draw Back: this assist examines the tile that the user would end up on for lowest enemy threat)
 						<br>2. Requires teleportation: Y > N
 						<br>3. Movement required: lowest #
 						<br>4. Tile priority value: highest #</p>
-					<p class="tab1">H. For each assister with non-movement assist, determine best target to assist using these tiebreaks:</p>
+					<p class="tab1">H. For each assister with non-Restore or non-movement assist, determine best target to assist using these tiebreaks:</p>
 						<p class="tab2">1. Has "threatens enemy" status: Y > N (refreshers/ralliers only)
 						<br>2. Rally efficacy: highest # (ralliers only)
 						<br>3. Amount healed: highest # (healers only)
 						<br>4. Distance from closest enemy: lowest # (ralliers only)
-						<br>5. Visible stat total: highest # (excludes: cleansers)
+						<br>5. Visible stat total: highest #
 						<br>6. Slot order: highest #</p>
 					<p class="tab1">I. If assister is using "Rally Up," choose target that's within 2 spaces of target chosen in step H to assist using these tiebreaks:</p>
 						<p class="tab2">1. Eligible target in step E but was not chosen in step H: N > Y
 						<br>2. Slot order: highest #</p>
-					<p class="tab1">J. For each assister with movement assist, determine best target to assist using these tiebreaks:</p>
+					<p class="tab1">J. For each assister with Restore, determine best target to assist using these tiebreaks:</p>
+						<p class="tab2">1. Has no debuffs: Y > N
+						<br>2. If not debuffs, amount healed: highest #
+						<br>3. If not debuffs, visible stat total: highest # 
+						</p>4. Slot order: highest #
+					<p class="tab1">K. For each assister with movement assist, determine best target to assist using these tiebreaks:</p>
 						<p class="tab2">1. Assisted with teleport skill: Y > N
 						<br>2. Assister distance from target: lowest #
 						<br>3. Slot order of adjacent blocked enemies: highest #
 						<br>4. Tile priority value: highest #</p>
-					<p class="tab1">K. Determine the best assister from the list, using these tiebreaks:</p>
+					<p class="tab1">L. Determine the best assister from the list using these tiebreaks:</p>
 						<p class="tab2">1. Non-movement assist: Y > N
 						<br>2. Has no weapon: Y > N
 						<br>3. Distance from closest enemy: highest #
-						<br>4. Non-movement assist type: Refresh > Heal = Cleanse = Rally
+						<br>4. Non-movement assist type: Refresh > Heal = Restore = Rally
 						<br>5. Slot order: lowest #</p>
-					<p class="tab1">L. Best assister uses its assist on its best target from the optimal tile; clear all states except for those from Step I and return to <a href="#step2">Step II [Assess Threats]</a></p><br>
+					<p class="tab1">M. Best assister uses its assist on its best target from the optimal tile; clear all states except for those from Step I and return to <a href="#step2">Step II [Assess Threats]</a></p><br>
 					
 				<p class="bigger" id="step5">V. Evaluate Attacks<p>
 					<p class="tab1">A. If attacker list is empty, skip to <a href="#step6">Step VI [Evaluate Post-Combat Assists]</a>
 					<br>B. For each attacker in the attacker list, give it the "debuffer" status if it has any skill in <a href="charts.html#chartG">Chart G</a> equipped
 					<br>C. For each attacker in the list, give it the "afflictor" status if it has any skill in <a href="charts.html#chartH">Chart H</a> equipped
-					<br>D. For each attacker in the list, determine best target to attack, using these tiebreaks:</p>
+					<br>D. For each attacker in the list, determine best target to attack using these tiebreaks:</p>
 						<p class="tab2">1. Best combat result: Win > Draw > Loss
 						<br>2. Able to debuff target by at least 2 uncombined points in def or res: Y > N (attacker with "debuffer" status only)
 						<br>3. Damage ratio: highest #
 						<br>4. Special charge increased: Y > N
 						<br>5. Slot order: highest #</p>
-					<p class="tab1">E. Determine the best attacker from the list, using these tiebreaks:</p>
+					<p class="tab1">E. Determine the best attacker from the list using these tiebreaks:</p>
 						<p class="tab2">1. Best combat result: Win > Draw > Loss
 						<br>2. Has debuffer status and able to debuff its target by at least 2 uncombined points in def or res: Y > N
 						<br>3. Has afflictor status and does not have the loss result against its best target: Y > N
@@ -130,40 +135,46 @@
 					<br>C. Check each target's post-combat eligibility using <a href="charts.html#chartD">Chart D</a>
 					<br>D. Remove ineligible targets from each assister's target list and remove assisters with no targets from assist list; if assist list is empty, skip to <a href="#step7">Step VII [Evaluate Movement]</a>
 					<br>E. For each assister, evaluate assist type using <a href="charts.html#chartC">Chart C</a>
-					<br>F. For each target for each assister with non-movement assist, determine the optimal tile from which to assist the target, using these tiebreaks:</p>
+					<br>F. For each target for each assister with non-movement assist, determine the optimal tile from which to assist the target using these tiebreaks:</p>
 						<p class="tab2">1. Defense tile: Y > N
 						<br>2. Enemy threat: lowest #
 						<br>3. Requires teleportation: Y > 
 						<br>4. Special terrain: Flier Terrain > Forest > Trench > Regular
 						<br>5. Movement required: lowest #
 						<br>6. Tile priority value: highest #</p>
-					<p class="tab1">G. For each target for each assister with movement assist, determine the optimal tile from which to assist the target, using these tiebreaks:</p>
+					<p class="tab1">G. For each target for each assister with movement assist, determine the optimal tile from which to assist the target using these tiebreaks:</p>
 						<p class="tab2">1. Able to bodyblock and prevent a melee enemy from attacking the ally ("blocker" status only; target MUST be eligible for assist)
 						<br>2. Enemy threat: lowest # (special note for Draw Back: this assist examines the tile that the user would end up on for lowest enemy threat)
 						<br>3. Requires teleportation: Y > N
 						<br>4. Movement required: lowest #: Y > N
 						<br>5. Tile priority value: highest #</p>
-					<p class="tab1">H. For each assister with non-movement assist, determine best target to assist, using these tiebreaks:</p>
+					<p class="tab1">H. For each assister with non-Restore or non-movement assist, determine best target to assist using these tiebreaks:</p>
 						<p class="tab2">1. Amount healed: highest # (healers only)
 						<br>2. Rally efficacy: highest # (ralliers only)
 						<br>3. Distance from closest enemy: lowest # (ralliers only)
-						<br>4. Visible stat total: highest # (excludes: cleanser)
+						<br>4. Visible stat total: highest #
 						<br>5. Slot order: highest #</p>
 					<p class="tab1">I. If assister is using "Rally Up," choose target that's within 2 spaces of target chosen in step H to assist using these tiebreaks:</p>
 						<p class="tab2">1. Eligible target in step C but was not chosen in step H: N > Y
 						<br>2. Slot order: highest #</p>
-					<p class="tab1">J. For each assister with movement assist, determine best target to assist, using these tiebreaks:</p>
+					<p class="tab1">J. For each assister with Restore, determine best target to assist using these tiebreaks:</p>
+						<p class="tab2">1. Has no debuffs and meets pre-combat HP threshold in <a href="#chartF">Chart F</a>)</li>: Y > N (yes this is for post-combat still)
+						<br>2. Has no debuffs: Y > N
+						<br>3. If no debuffs, amount healed: highest #
+						<br>4. If no debuffs, visible stat total: highest #
+						<br>5. Slot order: highest #</p>
+					<p class="tab1">K. For each assister with movement assist, determine best target to assist using these tiebreaks:</p>
 						<p class="tab2">1. Assisted with teleport skill: Y > N
 						<br>2. Visible stat total: highest #
 						<br>3. Distance from target: lowest #
 						<br>4. Slot number: highest #</p>
-					<p class="tab1">K. Determine the best assister from the list, using these tiebreaks:</p>
-						<p class="tab2">1. Assist type: Refresh > Heal = Cleanse > Rally > Movement
+					<p class="tab1">L. Determine the best assister from the list using these tiebreaks:</p>
+						<p class="tab2">1. Assist type: Refresh > Heal = Restore > Rally > Movement
 						<br>2. Has no weapon: Y > N
 						<br>3. Is a staff user or has the Sacrifice assist Y > N (healers only)
 						<br>4. Distance from closest enemy: highest #
 						<br>5. Slot order: lowest #</p>
-					<p class="tab1">L. Best assister uses its assist on its best target from the optimal tile; clear all states except for those from Step I and return to <a href="#step2">Step II [Assess Threats]</a></p><br>
+					<p class="tab1">M. Best assister uses its assist on its best target from the optimal tile; clear all states except for those from Step I and return to <a href="#step2">Step II [Assess Threats]</a></p><br>
 					
 				<p class="bigger" id="step7">VII. Evaluate Movement:</p>
 					<p class="tab1">A. If all units with actions have "cede move" status, skip to <a href="#step8">Step VIII [End Turn]</a>
