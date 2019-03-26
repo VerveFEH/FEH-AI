@@ -45,7 +45,7 @@
 				</div>
 				
 				<br><br><h2 id="chartA">Chart A: Pre-Combat Assist User Eligibility</h2>
-				<p>This chart shows the requirements for users of various assists to be eligible to perform their assist pre-combat (meaning, while attacks can still be made by anyone on the team).</p>
+				<p>This chart shows the requirements for users of various assists to be eligible to perform their assist pre-combat (meaning, while attacks can still be made by anyone on the team). For combat damage calculations, the unit only cares about how much damage it can do and does not account for counter attacks (including dying to vantage before actually doing damage) nor does it account for specials (including AoE specials or defensive specials like Miracle and thus includes overkill)</p>
 				<table>
 					<tr>
 					<thead>
@@ -66,6 +66,7 @@
 							<ul>
 								<li>Has no combat resulting in a win</li>
 								<li>Has no combat in which unit does at least 5 damage</li>
+								<li>Has at least one ally who has its action and has the "threatens enemy" status</li>
 							</ul>
 					</tr>
 					<tr>
@@ -103,6 +104,7 @@
 								<li>Has no combat resulting in a win</li>
 								<li>If using Ardent Sacrifice or Reciprocal Aid, must have no weapon equipped</li>
 								<li>If using Sacrifice, no combat in which unit does at least 5 damage</li>
+								<li>Has at least one ally who has its action and has the "threatens enemy" status</li>
 							</ul>
 						</td>
 					</tr>
@@ -117,6 +119,7 @@
 						<td class="left">
 							<ul>
 								<li>Has no combat resulting in a win</li>
+								<li>Has at least one ally who has its action and has the "threatens enemy" status</li>
 							</ul>
 						</td>
 					</tr>
@@ -136,18 +139,22 @@
 								</tr>
 								<tr>
 									<td>Rally Atk/Def</td>
-									<td>Rally Atk/Def+</td>
 									<td>Rally Atk/Res</td>
-
+									<td>Rally Spd/Def</td>
 								</tr>
 								<tr>
-									<td>Rally Spd/Def</td>
+									<td>Rally Spd/Def+</td>
 									<td>Rally Spd/Res</td>
 									<td>Rally Def/Res</td>
 								</tr>
 								<tr>
+									<td>Rally Def/Res+</td>
 									<td>Rally Up Atk</td>
 									<td>Rally Up Atk+</td>
+								</tr>
+								<tr>
+									<td>Rally Up Res</td>
+									<td>Rally Up Res+</td>
 									<td>Harsh Command</td>
 								</tr>
 							</table>
@@ -158,6 +165,7 @@
 								<li>Has no combat in which unit does at least 5 damage (excluding special activations)</li>	
 								<li>If debuffer, must not be able to reduce an enemy's def or res by at least 2 points</li>
 								<li>If afflictor, has no combat resulting in a draw</li>
+								<li>Has at least one ally who has its action and has the "threatens enemy" status</li>
 							</ul>
 						</td>
 					</tr>
@@ -176,6 +184,7 @@
 							</table>
 						<td class="left">
 							<ul>
+								<li>Has no ally that can attack an enemy</li>
 								<li>Has at least one ally who has its action and has the "threatens enemy" status</li>
 							</ul>
 						</td>
@@ -183,7 +192,7 @@
 				</table>
 				
 				<br><br><h2 id="chartB">Chart B: Pre-Combat Assist Target Eligibility</h2>
-				<p>This chart shows the requirements for targets of various assists to be eligible to receive those assists pre-combat (meaning, while attacks can still be made by anyone on the team). This chart does not include requirements according to game rules (i.e. must be missing HP to be healed), only extra rules used by the AI.</p>
+				<p>This chart shows the requirements for targets of various assists to be eligible to receive those assists pre-combat (meaning at least one ally with its action left is threatening an enemy). This chart does not include requirements according to game rules (i.e. must be missing HP to be healed), only extra rules used by the AI.</p>
 				<table>
 					<tr>
 					<thead>
@@ -272,18 +281,22 @@
 								</tr>
 								<tr>
 									<td>Rally Atk/Def</td>
-									<td>Rally Atk/Def+</td>
 									<td>Rally Atk/Res</td>
-
+									<td>Rally Spd/Def</td>
 								</tr>
 								<tr>
-									<td>Rally Spd/Def</td>
+									<td>Rally Spd/Def+</td>
 									<td>Rally Spd/Res</td>
 									<td>Rally Def/Res</td>
 								</tr>
 								<tr>
+									<td>Rally Def/Res+</td>
 									<td>Rally Up Atk</td>
 									<td>Rally Up Atk+</td>
+								</tr>
+								<tr>
+									<td>Rally Up Res</td>
+									<td>Rally Up Res+</td>
 									<td>Harsh Command</td>
 								</tr>
 							</table>
@@ -412,22 +425,23 @@
 								</tr>
 								<tr>
 									<td>Rally Atk/Def</td>
-									<td>Rally Atk/Def+</td>
 									<td>Rally Atk/Res</td>
-
+									<td>Rally Spd/Def</td>
 								</tr>
 								<tr>
-									<td>Rally Spd/Def</td>
+									<td>Rally Spd/Def+</td>
 									<td>Rally Spd/Res</td>
 									<td>Rally Def/Res</td>
 								</tr>
 								<tr>
+									<td>Rally Def/Res+</td>
 									<td>Rally Up Atk</td>
 									<td>Rally Up Atk+</td>
 								</tr>
 								<tr>
+									<td>Rally Up Res</td>
+									<td>Rally Up Res+</td>
 									<td>Harsh Command</td>
-									<td>Sacrifice</td>
 								</tr>
 							</table>
 						</td>
@@ -554,7 +568,6 @@
 									<td>Rally Atk/Def</td>
 									<td>Rally Atk/Res</td>
 									<td>Rally Spd/Def</td>
-
 								</tr>
 								<tr>
 									<td>Rally Spd/Def+</td>
@@ -562,8 +575,13 @@
 									<td>Rally Def/Res</td>
 								</tr>
 								<tr>
+									<td>Rally Def/Res+</td>
 									<td>Rally Up Atk</td>
 									<td>Rally Up Atk+</td>
+								</tr>
+								<tr>
+									<td>Rally Up Res</td>
+									<td>Rally Up Res+</td>
 								</tr>
 								<tr>
 									<td>Harsh Command</td>
@@ -635,7 +653,6 @@
 									<td>Rally Atk/Def</td>
 									<td>Rally Atk/Res</td>
 									<td>Rally Spd/Def</td>
-
 								</tr>
 								<tr>
 									<td>Rally Spd/Def+</td>
@@ -643,12 +660,13 @@
 									<td>Rally Def/Res</td>
 								</tr>
 								<tr>
+									<td>Rally Def/Res+</td>
 									<td>Rally Up Atk</td>
 									<td>Rally Up Atk+</td>
 								</tr>
 								<tr>
-									<td>Harsh Command</td>
-									<td>Sacrifice</td>
+									<td>Rally Up Res</td>
+									<td>Rally Up Res+</td>
 								</tr>
 							</table>
 						</td>
@@ -662,7 +680,9 @@
 				</table>
 				
 				<br><br><h2 id="chartF">Chart F: Pre-Combat Heal Thresholds</h2>
-				<p>There are two charts related to pre-combat healing eligibility. The first shows the minimum amount of health required to be restored to a target by a healing assist in order to be considered for pre-combat healing. The second shows, in the case that the heal does not meet the threshold of the first chart, how much maximum health (or lower) the target must have according to the amount of health able to be healed.</p>
+				<p>There are two charts related to pre-combat healing eligibility. The first shows the minimum amount of health required to be restored to a target by a healing assist in order to be considered for pre-combat healing. The second shows, in the case that the heal does not meet the threshold of the first chart, how much maximum health (or lower) the target must have according to the amount of health able to be healed.
+				<br>Extra HP healed by Imbue counts for heal amount. Extra HP healed by Heavenly Light does not count for heal amount.
+				</p>
 				<h3>Guaranteed Pre-Combat Heal Threshold</h3>
 				<table>
 					<tr>
@@ -880,6 +900,7 @@
 								</tr>
 								<tr>
 									<td>Seal Atk/Def 1/2</td>
+									<td>Seal Spd/Def 1/2</td>
 									<td>Seal Def/Res 1/2</td>
 								</tr>
 							</table>
