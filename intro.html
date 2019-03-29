@@ -7,6 +7,10 @@
 			<meta charset="utf-8">
 			<meta name="description" content="A guide on the AI behavior in the game Fire Emblem: Heroes">
 			<meta name="keywords" content="fire emblem heroes, ai">
+			<script>
+				var shukumei = new Audio('shukumei.wav');
+				shukumei.volume = 0.3;
+			</script>
 		</head>
 		
 		<body>
@@ -19,7 +23,7 @@
 			<aside>
 				<a href="index.html">Home<br></a>
 				<a href="intro.html">Introduction<br></a>
-				<a href="textguide.html">Plain Text Guide<br></a>
+				<a href="textguide.html">Text Guide<br></a>
 				<a href="charts.html">Charts<br></a>
 				<a href="glossary.html">Glossary<br></a>
 				<a href="changelog.html">Changelog<br></a>
@@ -27,7 +31,27 @@
 			<main>
 				<h1 style="text-align:center">Introduction</h1>
 
-				<p>Hi, welcome to an introduction to the anatomy of a turn... as it looks for the FEH AI! I will try to keep this light and relatively easy to digest. Illustrated charts are still being made, look forward to it!
+				<p> Heya, welcome to Mia's AI Manipulation Introductory Course. Here, I'll talk about the AI in FEH and try to give you some instruction on how to use the guides on this site.
+
+				<br><br>I'll start with the most frequently asked question of "Why didn't this dancer/unit with rally use their assist?" 95% of the time, it is because that unit has a potential combat in which they can do at least 5 damage. Just wanted to get that out of the way before we begin.
+
+				<br><br>So you are probably here for one or more of a few reasons: 1. You are hoping for illumination on how to improve your performance in Aether Raids, 2. You want to manipulate the enemy or your own autobattle for challenge runs (solos, full autobattle runs, etc), or 3. You are just curious about the clockwork of the FEH AI. You probably didn't come here just because you like me, but I won't judge if so. 
+				
+				<br><br>In any case, the purpose of the text guide on this site is to document all known AI behaviors. Unfortunately, that documentation is very dense and detailed, and if you have a weak base in AI knowledge and don't know what you are looking for, you will almost certainly get lost. Thus, here in this introduction I will seek to bolster your foundations so you will be able to better utilize the text guide, which ultimately contains all the answers.
+
+				<br><br>The very first thing to go over is the different type of actions that AI can perform. They are: movement, attack, pre-combat assist, and post-combat assist. Movement refers to  instances of a unit moving without performing any attacks or assists. There are a few exceptions to this, which you may find later. An attack refers to a unit performing an attack on an enemy unit. A pre-combat assist is essentially an assist that is performed while there is at least one possible attack to be made by the team. A post-combat assist is an assist that is performed while there are no attacks that could be made by the team. Do note that attacks and assists may require movement to perform the action, but even so the action itself is considered attack/assist, NOT movement. It is best to not conflate them together. 
+				
+				<br><br>The next thing to go over is the steps to evaluating each of these actions. There are three steps, which are: positioning, targeting, order. These steps are always performed sequentially, with the exception of movement, where it is actually reversed. In the positioning step, a unit looks at all possible positions to perform its action on each
+				potential target, then chooses the optimal tile for each target. In the targeting step, the unit chooses the best among its targets. It's very important to note that the positioning step occurs before this step because the tile that is chosen may affect the targeting step for attacks. The last step is order, where the priority between multiple units who want to perform the same type of action is decided. Again, for movement, the sequence of these steps are reversed, such that the order among moving units is decided first, then a unit chooses a target, and then decides the position to which to move.
+				
+				<br><br>Finally, we must understand how a turn is structured, and how these actions fit within that structure. In essence, we will move down a flowchart phase by phase and look for a unit that want to perform a particular action. If there's at least one, we look at their positioning and targeting tiebreakers, and if there are more than one, we will tiebreak the priority. If there are none, we would move on to the next phase. And whenever an action is performed, we start over back from the very top. So the order of the phases is: Pre-Combat Assist -> Attack -> Post-Combat Assist -> Movement. Now it's a little more nuanced than this in practice, but this is basically the flowchart for deciding an action. And then we keep repeating traversing this flowchart after each action until there are no units left with actions, or no units have an action they want to perform.
+
+				<br><br>Now that you know what the basic structure of deciding an action is, you should be able to search for the right section in the text guide to find relevant tiebreaks and other info for what you are looking for. So if you wanted to know why an enemy attacked your Ike instead of Zelgius, they were probably ordered to by Micaiah. But you could also look at the text guide in Section V, labeled "Evaluate Attacks" and look for a place with attack target tiebreaks, which would be subsection 4 in this case. If you were following a pheonixmaster1 guide and your merge on Ike caused the enemy to move differently than you expected, you could figure out this discrepancy by looking at the "Evaluate Movement" section, and finding the targeting and movement tiebreaks for the unit in question.
+
+				<br><br>The AI is yours to conquer, so long as you know what it is you are looking for. I'm always looking to improve this guide, so please let me know on twitter or discord if you have feedback!
+				</p>
+
+				<p style="display: none">Hi, welcome to an introduction to the anatomy of a turn... as it looks for the FEH AI! I will try to keep this light and relatively easy to digest. Illustrated charts are still being made, look forward to it!
 				
 				<br><br>The first thing I would like to do is go over the different type of actions that AI can perform. They are: movement, attack, pre-combat assist, and post-combat assist. Movement refers to most instances of a unit moving without performing any attacks or assists. There are a few exceptions to this, which you may find later. An attack refers to a unit performing an attack on an enemy unit. A pre-combat assist is an assist that is performed while there is at least one possible attack to be made by the team. A post-combat assist is an assist that is performed while there are no attacks that could be made by the team.
 				
@@ -55,9 +79,3 @@
 			</main>
 		</body>
 	</html>
-	
-	<script>
-		var shukumei = new Audio('shukumei.wav');
-		shukumei.volume = 0.3;
-
-	</script>

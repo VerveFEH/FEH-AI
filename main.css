@@ -15,8 +15,9 @@ header{
 }
 	
 aside{
-	margin-left: 2%;
-	width: 10%;
+    margin-left: 2%;
+    min-width: 10%;
+	/* width: 10%; */
 	float: left;
 	overflow: hidden;
 }
@@ -53,7 +54,6 @@ p {
 	font-size: 120%;
 	line-height: 1.4;
 }
-
 
 p.bigger{
 	font-size: 120%;
