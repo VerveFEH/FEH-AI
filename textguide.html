@@ -122,7 +122,7 @@
 					<p class="tab1">E. Determine the best attacker from the list using these tiebreaks:</p>
 						<p class="tab2">1. Best combat result: Win > Draw > Loss
 						<br>2. Has debuffer status and able to debuff its target by at least 2 uncombined points in def or res: Y > N
-						<br>3. Has afflictor status and does not have the loss result against its best target: Y > N
+						<br>3. Has afflictor status against its best target: Y > N
 						<br>4. Damage ratio: highest #
 						<br>5. Movement range: highest #
 						<br>6. Target's special charge increased: Y > N
@@ -203,8 +203,9 @@
 						<br>6. Special terrain: Flier Terrain > Forest > Trench > Regular
 						<br>7. Movement required: lowest # (non-shuffle status)
 						<br>8. Tile priority value: highest # </p>
-					<p class="tab1">H. Create a list of eligible blocks to be broken that satisfy the following condition:</p>
-						<p class="tab2">-Distance of block to target (using unit's movement) < distance of best tile from step G to target</p>
+					<p class="tab1">H. Create a list of eligible blocks to be broken that satisfy at least one of the following conditions:</p>
+						<p class="tab2">1. Distance of block to target (using unit's movement) < distance of best tile from step G to target
+						<br>2. Distance of block to target (using unit's movement) is undefined</p>
 					<p class="tab1">I. If unit is already standing on optimal movement tile in step G, and there exists at least one eligible block in step H, return to step G and re-evaluate optimal movement tile, disqualifying unit's current tile as an option.</p>
 					<p class="tab1">J. For each eligible block from step H, choose optimal tile from which to attack each block using the following tiebreaks:</p>
 						<p class="tab2">1. Defense tile: Y > N
