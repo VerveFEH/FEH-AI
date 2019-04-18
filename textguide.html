@@ -88,9 +88,13 @@
 						<br>4. Distance from closest enemy: lowest # (ralliers only)
 						<br>5. Visible stat total: highest #
 						<br>6. Slot order: highest #</p>
-					<p class="tab1">I. If assister is using "Rally Up," choose target that's within 2 spaces of target chosen in step H to assist using these tiebreaks:</p>
-						<p class="tab2">1. Eligible target in step E but was not chosen in step H: N > Y
-						<br>2. Slot order: highest #</p>
+					<p class="tab1">I. If assister is using "Rally Up," let "intended target" be the target chosen in step H, and let "other
+						eligible targets" be eligible targets in Step C who were not chosen in step H. Choose a target that's within 2
+						spaces of intended target to assist using these tiebreaks:</p>
+					<p class="tab2">1. Number of other eligible targets buffed as a result: highest #
+						<br>2. Is not another eligible target: Y > N
+						<br>3. Is intended target and is not the lowest slot among all other eligible targets: Y > N
+						<br>4. Slot order: highest #</p>
 					<p class="tab1">J. For each assister with Restore, determine best target to assist using these tiebreaks:</p>
 						<p class="tab2">1. Has no debuffs: Y > N
 						<br>2. If not debuffs, amount healed: highest #
