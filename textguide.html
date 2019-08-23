@@ -91,7 +91,7 @@
 						<br>2. Requires teleportation: Y > N
 						<br>3. Movement required: lowest #
 						<br>4. Tile priority value: highest #</p>
-					<p class="tab1">H. For each target of each assister with Reciprocal Aid or Ardent Sacrifice, if amount of enemy threat on assister at optimal assist tile is greater than amount of enemy threat on target, then that assist is ineligible to be performed.</p>
+					<p class="tab1">H. For each target of each assister with Sacrifice, Reciprocal Aid, or Ardent Sacrifice, if amount of enemy threat on assister at optimal assist tile is greater than amount of enemy threat on target, then that assist is ineligible to be performed.</p>
 					<p class="tab1">I. For each assister with non-Restore or non-movement assist, determine best target to assist using these tiebreaks:</p>
 						<p class="tab2">1. Has "threatens enemy" status: Y > N (refreshers only)
 						<br>2. Amount of stats actually buffed: highest # (ralliers only)
@@ -162,34 +162,37 @@
 						<br>3. Requires teleportation: Y > N
 						<br>4. Movement required: lowest #: Y > N
 						<br>5. Tile priority value: highest #</p>
-					<p class="tab1">H. For each assister with non-Restore or non-movement assist, determine best target to assist using these tiebreaks:</p>
+					<p class="tab1">H. For each target of each assister with Sacrifice, Reciprocal Aid, or Ardent Sacrifice, if amount of
+						enemy threat on assister at optimal assist tile is greater than amount of enemy threat on target, then that assist is
+						ineligible to be performed.</p>
+					<p class="tab1">I. For each assister with non-Restore or non-movement assist, determine best target to assist using these tiebreaks:</p>
 						<p class="tab2">1. Amount healed: highest # (healers only)
 						<br>2. Amount of stats actually buffed: highest # (ralliers only)
 						<br>3. Distance from closest enemy: lowest # (ralliers only)
 						<br>4. Visible stat total: highest #
 						<br>5. Slot order: highest #</p>
-					<p class="tab1">I. If assister is using "Rally Up," let "intended target" be the target chosen in step H, and let "other eligible targets" be eligible targets in Step C who were not chosen in step H. Choose a target that's within 2 spaces of intended target to assist using these tiebreaks:</p>
+					<p class="tab1">J. If assister is using "Rally Up," let "intended target" be the target chosen in step H, and let "other eligible targets" be eligible targets in Step C who were not chosen in step I. Choose a target that's within 2 spaces of intended target to assist using these tiebreaks:</p>
 						<p class="tab2">1. Number of other eligible targets buffed as a result: highest #
 						<br>2. Is not another eligible target: Y > N
 						<br>3. Is intended target and is not the lowest slot among all other eligible targets: Y > N
 						<br>4. Slot order: highest #</p>
-					<p class="tab1">J. For each assister with Restore, determine best target to assist using these tiebreaks:</p>
+					<p class="tab1">K. For each assister with Restore, determine best target to assist using these tiebreaks:</p>
 						<p class="tab2">1. Has no debuffs and meets pre-combat HP threshold in <a href="#chartF">Chart F</a></li>: Y > N (yes this is for post-combat still)
 						<br>2. Has no debuffs: Y > N
 						<br>3. If no debuffs, amount healed: highest #
 						<br>4. If no debuffs, visible stat total: highest #
 						<br>5. Slot order: highest #</p>
-					<p class="tab1">K. For each assister with movement assist, determine best target to assist using these tiebreaks:</p>
+					<p class="tab1">L. For each assister with movement assist, determine best target to assist using these tiebreaks:</p>
 						<p class="tab2">1. Assisted with teleport skill: Y > N
 						<br>2. Visible stat total: highest #
 						<br>3. Distance from target: lowest #
 						<br>4. Slot number: highest #</p>
-					<p class="tab1">L. Determine the best assister from the list using these tiebreaks:</p>
+					<p class="tab1">M. Determine the best assister from the list using these tiebreaks:</p>
 						<p class="tab2">1. Assist type (!W = Weaponless): !W Refresh = !W Heal = !W Restore = !W Donor Heal > Dance = Heal = Restore > !W Rally > Donor Heal = Rally > !W Movement > Movement
 						<br>2. Is a staff user or has the Sacrifice assist Y > N (healers only)
 						<br>3. Distance from closest enemy: highest #
 						<br>4. Slot order: lowest #</p>
-					<p class="tab1">M. Best assister uses its assist on its best target from the optimal tile; clear all states except for those from Step I and return to <a href="#step2">Step II [Assess Threats]</a></p><br>
+					<p class="tab1">N. Best assister uses its assist on its best target from the optimal tile; clear all states except for those from Step I and return to <a href="#step2">Step II [Assess Threats]</a></p><br>
 					
 				<p class="bigger" id="step7">VII. Evaluate Movement:</p>
 					<p class="tab1">A. If all units with actions have "cede move" status, skip to <a href="#step8">Step VIII [End Turn]</a>
