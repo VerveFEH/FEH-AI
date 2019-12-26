@@ -93,10 +93,10 @@
 						<br>4. Tile priority value: highest #</p>
 					<p class="tab1">H. For each target of each assister with Sacrifice, Reciprocal Aid, or Ardent Sacrifice, if amount of enemy threat on assister at optimal assist tile is greater than amount of enemy threat on target, then that assist is ineligible to be performed.</p>
 					<p class="tab1">I. For each assister with non-Restore or non-movement assist, determine best target to assist using these tiebreaks:</p>
-						<p class="tab2">1. Has "threatens enemy" status: Y > N (refreshers only)
-						<br>2. Amount of stats actually buffed: highest # (ralliers only)
-						<br>3. Amount healed: highest # (healers only)
-						<br>4. Distance from closest enemy: lowest # (ralliers only)
+						<p class="tab2">1. Has "threatens enemy" status: Y > N (compare refreshers only)
+						<br>2. Amount of stats actually buffed: highest # (compare ralliers only)
+						<br>3. Amount healed: highest # (compare healers only)
+						<br>4. Distance from closest enemy: lowest # (compare ralliers only)
 						<br>5. Visible stat total: highest #
 						<br>6. Slot order: highest #</p>
 					<p class="tab1">J. If assister is using "Rally Up," let "intended target" be the target chosen in step I, and let "other
@@ -129,7 +129,7 @@
 					<br>C. For each attacker in the list, give it the "afflictor" status if it has any skill in <a href="charts.html#chartH">Chart H</a> equipped
 					<br>D. For each attacker in the list, determine best target to attack using these tiebreaks:</p>
 						<p class="tab2">1. Best combat result: Win > Draw > Loss
-						<br>2. Able to debuff target by at least 2 uncombined points in def or res: Y > N (attacker with "debuffer" status only)
+						<br>2. Able to debuff target by at least 2 uncombined points in def or res: Y > N (compare attacker with "debuffer" status only)
 						<br>3. Damage ratio: highest #
 						<br>4. Special charge increased: Y > N
 						<br>5. Slot order: highest #</p>
@@ -166,11 +166,12 @@
 						enemy threat on assister at optimal assist tile is greater than amount of enemy threat on target, then that assist is
 						ineligible to be performed.</p>
 					<p class="tab1">I. For each assister with non-Restore or non-movement assist, determine best target to assist using these tiebreaks:</p>
-						<p class="tab2">1. Amount healed: highest # (healers only)
-						<br>2. Amount of stats actually buffed: highest # (ralliers only)
-						<br>3. Distance from closest enemy: lowest # (ralliers only)
-						<br>4. Visible stat total: highest #
-						<br>5. Slot order: highest #</p>
+						<p class="tab2">1. Threatens Enemy: Y > N (compare refreshers only)
+						<br>2. Amount healed: highest # (compare healers only)
+						<br>3. Amount of stats actually buffed: highest # (compare ralliers only)
+						<br>4. Distance from closest enemy: lowest # (compare ralliers only)
+						<br>5. Visible stat total: highest #
+						<br>6. Slot order: highest #</p>
 					<p class="tab1">J. If assister is using "Rally Up," let "intended target" be the target chosen in step I, and let "other eligible targets" be eligible targets in Step C who were not chosen in step I. Choose a target that's within 2 spaces of intended target to assist using these tiebreaks:</p>
 						<p class="tab2">1. Number of other eligible targets buffed as a result: highest #
 						<br>2. Is not another eligible target: Y > N
@@ -189,7 +190,7 @@
 						<br>4. Slot number: highest #</p>
 					<p class="tab1">M. Determine the best assister from the list using these tiebreaks:</p>
 						<p class="tab2">1. Assist type (!W = Weaponless): !W Refresh = !W Heal = !W Restore = !W Donor Heal > Dance = Heal = Restore > !W Rally > Donor Heal = Rally > !W Movement > Movement
-						<br>2. Is a staff user or has the Sacrifice assist Y > N (healers only)
+						<br>2. Is a staff user or has the Sacrifice assist Y > N (compare healers only)
 						<br>3. Distance from closest enemy: highest #
 						<br>4. Slot order: lowest #</p>
 					<p class="tab1">N. Best assister uses its assist on its best target from the optimal tile; clear all states except for those from Step I and return to <a href="#step2">Step II [Assess Threats]</a></p><br>
