@@ -213,7 +213,7 @@
 						<br>5. Requires teleportation: Y > N
 						<br>6. Special terrain: Flier Terrain > Forest > Trench > Regular
 						<br>7. Tile priority value: highest #</p>
-					<p class="tab1">G. Determine best tile to move to using the following tiebreaks: (SPECIAL NOTE: if enemy cannot be pathed to, unit paths toward first adjacent tile according to tile priority if melee. If ranged, unit first checks for adjacent tiles, then tiles up to 1 space away, according to tile priority. This only applies to chasing enemies.)</p>
+					<p class="tab1">G. Determine best tile to move to using the following tiebreaks: (SPECIAL NOTE: if enemy cannot be directly pathed to, unit paths toward closest tile from which they can attack, tiebroken by tile priority if necessary. This only applies when chasing enemies.)</p>
 						<p class="tab2">1. Distance from target: lowest #
 						<br>2. Defense tile: Y > N
 						<br>3. Enemy threat: lowest #
