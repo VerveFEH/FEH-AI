@@ -54,12 +54,12 @@
 						<br>2. Attack type: Melee > Ranged > Weaponless
 						<br>3. Distance to closest enemy: lowest #
 						<br>4. Slot order: lowest #</p>
-					<p class="tab1">C. Store movement range of each unit and enemy which does not have the "pass" status</p>
+					<p class="tab1">C. Store movement range of each unit</p>
 						
 				<p class="bigger" id="step2">II. Assess Threats:</p>
 					<p class="tab1">A. If no units have actions, skip to <a href="#step8">Step VIII [End Turn]</a>
 					<br>B. For each unit with a weapon equipped, give "threatens enemy" status if at least 1 enemy is in unit's threat range (based on unit's movement stored from step I.C)
-					<br>C. For each unit, give "threatened by enemy" status if unit is in at least 1 enemy's threat range. Calculate threat range of each enemy based on enemy's movement range (step I.B) and accounting for blocks based on the Block Obstacle List (step I.A.4), or if an enemy has the "pass" status, use current movement range and factor in obstacles from their respective foes' Obstacle List and the Block Obstacle List(step I.A.2-4)</p><br>
+					<br>C. For each unit, give "threatened by enemy" status if unit is in at least 1 enemy's threat range. Calculate threat range of each enemy based on enemy's movement range (step I.B) and accounting for blocks based on the Block Obstacle List (step I.A.4), and if an enemy has the "pass" status, factor in obstacles from their respective foes' Obstacle List and the Block Obstacle List(step I.A.2-4)</p><br>
 					
 				<p class="bigger" id="step3">III. Calculate Combat Results:</p>
 					<p class="tab1">A. Create attacker list containing each unit with action that has the "threatens enemy" status; if list is empty, skip to <a href="#step6">Step VI [Evaluate Post-Combat Assists]</a>
