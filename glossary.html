@@ -222,7 +222,7 @@
 						<p class="tab2">This tiebreaker only exists for standard movement. Assuming all else is equal, a tile that is closer to any diagonal to the chase target has priority over other tiles. Being directly diagonal from the target has the highest priority. Distance from the diagonal is measured in absolute number of spaces away, so movement type and obstacles are not factored in.
 						<img src="images/diagonal.png"></p>
 					<h3 id="section3g" class="tab1"><a href="#section3g">g. Terrain</a></h3>
-						<p class="tab2">Assuming all else is equal, a tile with more prohibitive terrain has priority over other tiles. The hierarchy of special terrains is: flier terrain > forest > trench > regular. Flier terrain is any terrain that can only be accessed by flying units, whether it be water, mountains, lava, abyss, etc. Forests hinder infantry and prohibit cavalry, so they are next. Trenches only hinder cavalry, so they are the least prohibitive special terrain. Regular tiles have the least priority, of course.</p>
+						<p class="tab2">Assuming all else is equal, a tile with more prohibitive terrain has priority over other tiles. The hierarchy of special terrains is: flier terrain > forest > trench >= regular. Trench only has priority over regular tiles for cavalry units. Flier terrain is any terrain that can only be accessed by flying units, whether it be water, mountains, lava, abyss, etc. Forests hinder infantry and prohibit cavalry, so they are next. Trenches only hinder cavalry, so they are the least prohibitive special terrain, such that only cavalry care about them for priority. Regular tiles have the least priority, of course.</p>
 					<h3 id="section3h" class="tab1"><a href="#section3h">h. Movement</a></h3>
 						<p class="tab2">Assuming all else is equal, a tile that requires the lowest amount of movement to reach has priority over other tiles. The only time this is not true is for standard movement if the unit has the "shuffle" status.</p>
 					<h3 id="section3i" class="tab1"><a href="#section3i">i. Tile Priority</a></h3>
@@ -286,7 +286,7 @@
 						
 						<br><br>Overall what this formula shows is that for each turn farther a target is, it needs to take 5 more damage to maintain equal value.</p>
 					<h3 id="section4k" class="tab1"><a href="#section4k">k. Terrain</a></h3>
-						<p class="tab2">This tiebreaker only exists for offensive movement assist evaluation. Assuming all else is equal, the target who is standing on a more prohibitive special terrain will have priority over other targets. As a reminder, the special terrain hierarchy is: Flier Terrain > Forest > Trench > Regular.</p>
+						<p class="tab2">This tiebreaker only exists for offensive movement assist evaluation. Assuming all else is equal, the target who is standing on a more prohibitive special terrain will have priority over other targets. As a reminder, the special terrain hierarchy is: Flier Terrain > Forest > Trench >= Regular (Trench > Regular only if cavalry).</p>
 					<h3 id="section4l" class="tab1"><a href="#section4l">l. Tile Priority</a></h3>
 						<p class="tab2">This tiebreaker only exists for offensive movement assist evaluation. Assuming all else is equal, the target who is standing on the tile with higher priority will have priority over other targets. See <a href="#section1b">Section 1b</a> for more details on tile priority.</p>
 					<h3 id="section4m" class="tab1"><a href="#section4m">m. Slot Order</a></h3>

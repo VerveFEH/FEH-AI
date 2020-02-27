@@ -68,7 +68,7 @@
 						<p class="tab2">1. Defense tile: Y > N
 						<br>2. Enemy threat: lowest #
 						<br>3. Requires teleportation: Y > N
-						<br>4. Special terrain: Flier Terrain > Forest > Trench > Regular
+						<br>4. Special terrain: Flier Terrain > Forest > Trench >= Regular (Trench > Regular only if cavalry)
 						<br>5. Movement required: lowest #
 						<br>6. Tile priority value: highest #</p>
 					<p class="tab1">D. Calculate combat result for each target for each attacker, based on tile selected in previous step</p><br>
@@ -83,7 +83,7 @@
 						<p class="tab2">1. Defense tile: Y > N
 						<br>2. Enemy threat: lowest #
 						<br>3. Requires teleportation: Y > N
-						<br>4. Special terrain: Flier Terrain > Forest > Trench > Regular
+						<br>4. Special terrain: Flier Terrain > Forest > Trench >= Regular (Trench > Regular only if cavalry)
 						<br>5. Movement required: lowest #
 						<br>6. Tile priority value: highest #</p>
 					<p class="tab1">G. For each target for each assister with movement assist, determine the optimal tile from which to assist the target using these tiebreaks:</p>
@@ -94,7 +94,7 @@
 					<p class="tab1">H. For each target of each assister with Sacrifice, Reciprocal Aid, or Ardent Sacrifice, if amount of enemy threat on assister at optimal assist tile is greater than amount of enemy threat on target, then that assist is ineligible to be performed.</p>
 					<p class="tab1">I. For each assister with non-Restore or non-movement assist, determine best target to assist using these tiebreaks:</p>
 						<p class="tab2">1. Has "threatens enemy" status: Y > N (compare refreshers only)
-						<br>2. Amount of stats actually buffed: highest # (compare ralliers only)
+						<br>2. Amount of stats actually buffed: highest # (compare ralliers only, but ignore if using "Rally Up")
 						<br>3. Amount healed: highest # (compare healers only)
 						<br>4. Distance from closest enemy: lowest # (compare ralliers only)
 						<br>5. Visible stat total: highest #
@@ -153,7 +153,7 @@
 						<p class="tab2">1. Defense tile: Y > N
 						<br>2. Enemy threat: lowest #
 						<br>3. Requires teleportation: Y > 
-						<br>4. Special terrain: Flier Terrain > Forest > Trench > Regular
+						<br>4. Special terrain: Flier Terrain > Forest > Trench >= Regular (Trench > Regular only if cavalry)
 						<br>5. Movement required: lowest #
 						<br>6. Tile priority value: highest #</p>
 					<p class="tab1">G. For each target for each assister with movement assist, determine the optimal tile from which to assist the target using these tiebreaks:</p>
@@ -211,7 +211,7 @@
 						<br>3. Defense tile: Y > N
 						<br>4. Enemy threat: lowest #
 						<br>5. Requires teleportation: Y > N
-						<br>6. Special terrain: Flier Terrain > Forest > Trench > Regular
+						<br>6. Special terrain: Flier Terrain > Forest > Trench >= Regular (Trench > Regular only if cavalry)
 						<br>7. Tile priority value: highest #</p>
 					<p class="tab1">G. Determine best tile to move to using the following tiebreaks: (SPECIAL NOTE: if enemy cannot be directly pathed to, unit paths toward closest tile from which they can attack. Choose by highest tile priority value if there is a tie. This only applies when chasing enemies.)</p>
 						<p class="tab2">1. Distance from target: lowest #
@@ -219,7 +219,7 @@
 						<br>3. Enemy threat: lowest #
 						<br>4. Requires teleportation: Y > N
 						<br>5. Tiles from diagonal to target: lowest #
-						<br>6. Special terrain: Flier Terrain > Forest > Trench > Regular
+						<br>6. Special terrain: Flier Terrain > Forest > Trench >= Regular (Trench > Regular only if cavalry)
 						<br>7. Movement required: lowest # (non-shuffle status)
 						<br>8. Tile priority value: highest # </p>
 					<p class="tab1">H. Create a list of eligible blocks to be broken that satisfy at least one of the following conditions:</p>
@@ -230,7 +230,7 @@
 						<p class="tab2">1. Defense tile: Y > N
 						<br>2. Enemy threat: lowest #
 						<br>3. Requires teleportation: Y > N
-						<br>4. Special terrain: Flier Terrain > Forest > Trench > Regular
+						<br>4. Special terrain: Flier Terrain > Forest > Trench >= Regular (Trench > Regular only if cavalry)
 						<br>5. Movement required: lowest #
 						<br>6. Tile priority value: highest #</p>
 					<p class="tab1">K. If there is at least one eligible block, choose and break the best block using the following tiebreaks:</p>
