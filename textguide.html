@@ -93,12 +93,13 @@
 						<br>4. Tile priority value: highest #</p>
 					<p class="tab1">H. For each target of each assister with Sacrifice, Reciprocal Aid, or Ardent Sacrifice, if amount of enemy threat on assister at optimal assist tile is greater than amount of enemy threat on target, then that assist is ineligible to be performed.</p>
 					<p class="tab1">I. For each assister with non-Restore or non-movement assist, determine best target to assist using these tiebreaks:</p>
-						<p class="tab2">1. Has "threatens enemy" status: Y > N (compare refreshers only)
-						<br>2. Amount of stats actually buffed: highest # (compare ralliers only, but ignore if using "Rally Up")
-						<br>3. Amount healed: highest # (compare healers only)
-						<br>4. Distance from closest enemy: lowest # (compare ralliers only)
-						<br>5. Visible stat total: highest #
-						<br>6. Slot order: highest #</p>
+						<p class="tab2">1. Has "threatens enemy" status: Y > N (compare for refreshers only)
+						<br>2. Has both a stat debuff and a nonstat debuff (compare for Harsh Command+ only)
+						<br>3. Amount of stats actually buffed: highest # (compare for ralliers only, but ignore if using "Rally Up")
+						<br>4. Amount healed: highest # (compare for healers only)
+						<br>5. Distance from closest enemy: lowest # (compare for ralliers only)
+						<br>6. Visible stat total: highest #
+						<br>7. Slot order: highest #</p>
 					<p class="tab1">J. If assister is using "Rally Up," divide all of its targets into three categories: let "eligible targets" be targets remaining after step E, let "intended target" be the target chosen from them in step I and let "ineligible targets" be targets discarded during step E. Choose a target that's within 2 spaces of intended target to assist using these tiebreaks:</p>
 					<p class="tab2">1. Number of eligible targets buffed as a result: highest #
 						<br>2. Is intended target and is not the lowest slot among all other eligible targets: Y > N
@@ -165,11 +166,12 @@
 						ineligible to be performed.</p>
 					<p class="tab1">I. For each assister with non-Restore or non-movement assist, determine best target to assist using these tiebreaks:</p>
 						<p class="tab2">1. Threatens Enemy: Y > N (compare refreshers only)
-						<br>2. Amount healed: highest # (compare healers only)
-						<br>3. Amount of stats actually buffed: highest # (compare ralliers only)
-						<br>4. Distance from closest enemy: lowest # (compare ralliers only)
-						<br>5. Visible stat total: highest #
-						<br>6. Slot order: highest #</p>
+						<br>2. Amount healed: highest # (compare for healers only)
+						<br>3. Has both a stat debuff and a nonstat debuff (compare for Harsh Command+ only)
+						<br>4. Amount of stats actually buffed: highest # (compare for ralliers only)
+						<br>5. Distance from closest enemy: lowest # (compare for ralliers only)
+						<br>6. Visible stat total: highest #
+						<br>7. Slot order: highest #</p>
 					<p class="tab1">J. If assister is using "Rally Up," divide all of its targets into three categories: let "eligible targets" be targets remaining after step D, let "intended target" be the target chosen from them in step I and let "ineligible targets" be targets discarded during step D. Choose a target that's within 2 spaces of intended target to assist using these tiebreaks:</p>
 						<p class="tab2">1. Number of other eligible targets buffed as a result: highest #
 						<br>2. Is intended target and is not the lowest slot among all other eligible targets: Y > N
