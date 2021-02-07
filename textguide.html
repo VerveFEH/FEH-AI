@@ -55,30 +55,29 @@
 						<br>3. Distance to closest enemy: lowest #
 						<br>4. Slot order: lowest #</p>
 					<p class="tab1">C. Store movement range of each unit</p>
-						
-				<p class="bigger" id="step2">II. Assess Threats:</p>
-					<p class="tab1">A. If no units have actions, skip to <a href="#step8">Step VIII [End Turn]</a>
-					<br>B. For each unit with a weapon equipped, give "threatens enemy" status if at least 1 enemy is in unit's threat range (based on unit's movement stored from step I.C)
-					<br>C. For each unit, give "threatened by enemy" status if unit is in at least 1 enemy's threat range. Calculate threat range of each enemy based on enemy's movement range (step I.B) and accounting for blocks based on the Block Obstacle List (step I.A.4), and if an enemy has the "pass" status, factor in obstacles from their respective foes' Obstacle List and the Block Obstacle List(step I.A.2-4)</p><br>
+					<p class="tab1">D. For each unit, give "threatened by enemy" status if unit is in at least 1 enemy's threat range. Calculate threat range of each enemy based on enemy's movement range (step I.B) and accounting for blocks based on the Block Obstacle List (step I.A.4), and if an enemy has the "pass" status, factor in obstacles from their respective foes' Obstacle List and the Block Obstacle List(step I.A.2-4)</p>
 					
-				<p class="bigger" id="step3">III. Calculate Combat Results:</p>
-					<p class="tab1">A. Create attacker list containing each unit with action that has the "threatens enemy" status; if list is empty, skip to <a href="#step6">Step VI [Evaluate Post-Combat Assists]</a>
-					<br>B. For each attacker in the list, populate a target list containing each enemy that can be attacked; remove each attacker with no attackble targets and if list is empty, skip to <a href="#step4">Step IV [Evaluate Pre-Combat Assists]</a>
-					<br>C. For each target in each list, determine the optimal tile from which to attack using these tiebreaks:</p>
+				<p class="bigger" id="step2">II. Calculate Combat Results:</p>
+					<p class="tab1">A. If no units have actions, skip to <a href="#step7">Step VII [End Turn]</a>
+					<br>B. For each unit with a weapon equipped, give "threatens enemy" status if at least 1 enemy is in unit's threat range
+					(based on unit's CURRENT movement, NOT the one stored from step I.C)
+					<br>C. Create attacker list containing each unit with action that has the "threatens enemy" status from step B; if list is empty, skip to <a href="#step5">Step V [Evaluate Post-Combat Assists]</a>
+					<br>D. For each attacker in the list, populate a target list containing each enemy that can be attacked; remove each attacker with no attackble targets and if list is empty, skip to <a href="#step3">Step III [Evaluate Pre-Combat Assists]</a>
+					<br>E. For each target in each list, determine the optimal tile from which to attack using these tiebreaks:</p>
 						<p class="tab2">1. Defense tile: Y > N
 						<br>2. Enemy threat: lowest #
 						<br>3. Requires teleportation: Y > N
 						<br>4. Special terrain: Flier Terrain > Forest > Trench >= Regular (Trench > Regular only if cavalry)
 						<br>5. Movement required: lowest #
 						<br>6. Tile priority value: highest #</p>
-					<p class="tab1">D. Calculate combat result for each target for each attacker, based on tile selected in previous step</p><br>
+					<p class="tab1">F. Calculate combat result for each target for each attacker, based on tile selected in previous step</p><br>
 					
-				<p class="bigger" id="step4">IV. Evaluate Pre-Combat Assists:</p>
+				<p class="bigger" id="step3">III. Evaluate Pre-Combat Assists:</p>
 					<p class="tab1">A. Check each unit with action with assist equipped for pre-combat eligibility and evaluate assist type using <a href="charts.html#chartA">Chart A</a>
-					<br>B. Create assist list with each unit that meets pre-combat eligibility from previous step; if list is empty, skip to <a href="#step5">Step V [Evaluate Attacks]</a>
+					<br>B. Create assist list with each unit that meets pre-combat eligibility from previous step; if list is empty, skip to <a href="#step4">Step IV [Evaluate Attacks]</a>
 					<br>C. For each assister on the list, populate a target list with each ally its assist can be used on
 					<br>D. Check each target's pre-combat eligibility using <a href="charts.html#chartB">Chart B</a>
-					<br>E. Remove ineligible targets from each assister's target list and remove assisters with no targets from assist list; if assist list is empty, skip to <a href="#step5">Step V [Evaluate Attacks]</a>
+					<br>E. Remove ineligible targets from each assister's target list and remove assisters with no targets from assist list; if assist list is empty, skip to <a href="#step4">Step IV [Evaluate Attacks]</a>
 					<br>F. For each target for each assister with non-movement assist, determine the optimal tile from which to assist the target using these tiebreaks:</p>
 						<p class="tab2">1. Defense tile: Y > N
 						<br>2. Enemy threat: lowest #
@@ -120,10 +119,10 @@
 						<br>2. Has no weapon: Y > N
 						<br>3. Distance from closest enemy: highest #
 						<br>4. Slot order: lowest #</p>
-					<p class="tab1">N. Best assister uses its assist on its best target from the optimal tile; clear all states except for those from Step I and return to <a href="#step2">Step II [Assess Threats]</a></p><br>
+					<p class="tab1">N. Best assister uses its assist on its best target from the optimal tile; clear all states except for those from Step I and return to <a href="#step2">Step II [Calculate Combat Results]</a></p><br>
 					
-				<p class="bigger" id="step5">V. Evaluate Attacks<p>
-					<p class="tab1">A. If attacker list is empty, skip to <a href="#step6">Step VI [Evaluate Post-Combat Assists]</a>
+				<p class="bigger" id="step4">IV. Evaluate Attacks<p>
+					<p class="tab1">A. If attacker list is empty, skip to <a href="#step5">Step V [Evaluate Post-Combat Assists]</a>
 					<br>B. For each attacker in the attacker list, give it the "debuffer" status if it has any skill in <a href="charts.html#chartG">Chart G</a> equipped
 					<br>C. For each attacker in the list, give it the "afflictor" status if it has any skill in <a href="charts.html#chartH">Chart H</a> equipped
 					<br>D. For each attacker in the list, determine best target to attack using these tiebreaks:</p>
@@ -140,13 +139,13 @@
 						<br>5. Movement range: highest #
 						<br>6. Target's special charge increased: Y > N
 						<br>7. Slot order: highest #</p>
-					<p class="tab1">F. Best attacker attacks its best target from the optimal tile. If an enemy was defeated OR if an enemy's location was displaced (i.e. drag back, lunge), for each unit with the "pass" status, check if their skill granting "pass" is still active; if not, remove "pass" status from that unit. In addition, for each tile in each Obstacle List (step I.A.2-4), if there is no longer an ally, enemy, or block occupying it, remove that tile from the respective Obstacle List. Clear all states except for those from Step I and return to <a href="#step2">Step II [Assess Threats]</a></p><br>
+					<p class="tab1">F. Best attacker attacks its best target from the optimal tile. If an enemy was defeated OR if an enemy's location was displaced (i.e. drag back, lunge), for each unit with the "pass" status, check if their skill granting "pass" is still active; if not, remove "pass" status from that unit. In addition, for each tile in each Obstacle List (step I.A.2-4), if there is no longer an ally, enemy, or block occupying it, remove that tile from the respective Obstacle List. Clear all states except for those from Step I and return to <a href="#step2">Step II [Calculate Combat Results]</a></p><br>
 					
-				<p class="bigger" id="step6">VI. Evaluate Post-Combat Assists:</p>
+				<p class="bigger" id="step5">V. Evaluate Post-Combat Assists:</p>
 					<p class="tab1">A. Add each unit with action with assist equipped to the assist list
 					<br>B. For each assister on the list, populate a target list with each ally its assist can be used on
 					<br>C. Check each target's post-combat eligibility using <a href="charts.html#chartD">Chart D</a>
-					<br>D. Remove ineligible targets from each assister's target list and remove assisters with no targets from assist list; if assist list is empty, skip to <a href="#step7">Step VII [Evaluate Movement]</a>
+					<br>D. Remove ineligible targets from each assister's target list and remove assisters with no targets from assist list; if assist list is empty, skip to <a href="#step6">Step VI [Evaluate Movement]</a>
 					<br>E. For each assister, evaluate assist type using <a href="charts.html#chartC">Chart C</a>
 					<br>F. For each target for each assister with non-movement assist, determine the optimal tile from which to assist the target using these tiebreaks:</p>
 						<p class="tab2">1. Defense tile: Y > N
@@ -193,10 +192,10 @@
 						<br>2. Is a staff user or has the Sacrifice assist Y > N (compare healers only)
 						<br>3. Distance from closest enemy: highest #
 						<br>4. Slot order: lowest #</p>
-					<p class="tab1">N. Best assister uses its assist on its best target from the optimal tile; clear all states except for those from Step I and return to <a href="#step2">Step II [Assess Threats]</a></p><br>
+					<p class="tab1">N. Best assister uses its assist on its best target from the optimal tile; clear all states except for those from Step I and return to <a href="#step2">Step II [Calculate Combat Results]</a></p><br>
 					
-				<p class="bigger" id="step7">VII. Evaluate Movement:</p>
-					<p class="tab1">A. If all units with actions have "cede move" status, skip to <a href="#step8">Step VIII [End Turn]</a>
+				<p class="bigger" id="step6">VI. Evaluate Movement:</p>
+					<p class="tab1">A. If all units with actions have "cede move" status, skip to <a href="#step7">Step VII [End Turn]</a>
 					<br>B. For first unit on movement order list with action and no "cede move" status, check if unit satisfies conditions for "shuffle" status in <a href="#section2d">Glossary Section 2d</a>
 					<br>C. For first unit on movement order list with action and no "cede move" status, if it has a weapon equipped, determine enemy target using the following tiebreaks:</p>
 						<p class="tab2">1. Chase priority value: highest # (see Glossary 4.J)
@@ -204,7 +203,7 @@
 					<p class="tab1">D. If no target was able to be determined from previous step (whether due to no weapon or no target), if all allies have a defined distance, determine ally to target using the following tiebreakers:</p>
 						<p class="tab2">1. Distance: lowest #
 						<br>2. Slot order: highest #</p>
-					<p class="tab1">E. If no target was able to be determined from either step C or step D, unit gains "cede move" status; repeat <a href="#step7">Step VII [Evaluate Movement]</a></p>
+					<p class="tab1">E. If no target was able to be determined from either step C or step D, unit gains "cede move" status; repeat <a href="#step6">Step VI [Evaluate Movement]</a></p>
 					<p class="tab1">F. If unit has "shuffle" status, determine that best tile to move using the following tiebreaks:</p>
 						<p class="tab2">1. Standing still: N > Y
 						<br>2. Distance to target: lowest #
@@ -238,7 +237,7 @@
 						<br>2. Optimal attack tile is defense tile: Y > N
 						<br>3. Optimal attack tile's enemy threat: lowest #
 						<br>4. Tile priority value: highest #</p>
-					<p class="tab1">L. If a block was broken from Step M, clear all states except for those from Step I and return to <a href="#step2">Step II [Assess Threats]</a>
+					<p class="tab1">L. If a block was broken from Step M, clear all states except for those from Step I and return to <a href="#step2">Step II [Calculate Combat Results]</a>
 					<p class="tab1">M. If unit has Pivot, determine best Pivot tile using the following tiebreaks:</p>
 						<p class="tab2">1. Distance from target: lowest#
 						<br>2. Defense tile: Y > N
@@ -258,10 +257,10 @@
 					<p class="tab1">P. If assister is using "Rally Up," choose target that's within 2 spaces of target chosen in step P to assist using these tiebreaks:</p>
 						<p class="tab2">1. Eligible target in step P but was not chosen: N > Y
 						<br>2. Slot order: highest #</p>
-					<p class="tab1">Q. If current tile is the best tile, unit gains "cede move" status; repeat <a href="#step7">Step VII [Evaluate Movement]</a>
-					<br>R. Unit moves to the best tile/Pivot tile; clear all states except for those from Step I and return to <a href="#step2">Step II [Assess Threats]</a></p><br>
+					<p class="tab1">Q. If current tile is the best tile, unit gains "cede move" status; repeat <a href="#step6">Step VI [Evaluate Movement]</a>
+					<br>R. Unit moves to the best tile/Pivot tile; clear all states except for those from Step I and return to <a href="#step2">Step II [Calculate Combat Results]</a></p><br>
 					
-				<p class="bigger" id="step8">VIII. End Turn</p>
+				<p class="bigger" id="step7">VII. End Turn</p>
 				
 				<br><br>
 			</main>
