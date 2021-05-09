@@ -119,7 +119,18 @@
 						<br>2. Has no weapon: Y > N
 						<br>3. Distance from closest enemy: highest #
 						<br>4. Slot order: lowest #</p>
-					<p class="tab1">N. Best assister uses its assist on its best target from the optimal tile; clear all states except for those from Step I and return to <a href="#step2">Step II [Assess Threats]</a></p><br>
+					<p class="tab1">N. Select the best assister, store its current tile as the "starting tile", then it uses its assist on its best target from the optimal tile</p>
+					<p class="tab1">O. If the assister has Canto, determine best tile to move to using the following tiebreaks:</p>
+						<p class="tab2">1. Enemy threat: lowest #
+							<br>2. Standing still: N > Y
+							<br>3. Distance to starting tile from Step N: highest #
+							<br>4. Defense tile: Y > N
+							<br>5. Tiles from diagonal to starting tile from Step F: lowest #
+							<br>6. Special terrain: Flier Terrain > Forest > Trench >= Regular (Trench > Regular only if cavalry)
+							<br>7. Requires teleportation: Y > N
+							<br>8. Movement required: lowest #
+							<br>9. Tile priotiy value: highest #</p>
+					<p class="tab1">P. Clear all states except for those from Step I and return to <a href="#step2">Step II [Assess Threats]</a></p><br>
 					
 				<p class="bigger" id="step5">V. Evaluate Attacks<p>
 					<p class="tab1">A. If attacker list is empty, skip to <a href="#step6">Step VI [Evaluate Post-Combat Assists]</a>
@@ -139,7 +150,19 @@
 						<br>5. Movement range: highest #
 						<br>6. Target's special charge increased: Y > N
 						<br>7. Slot order: highest #</p>
-					<p class="tab1">F. Best attacker attacks its best target from the optimal tile. If an enemy was defeated OR if an enemy's location was displaced (i.e. drag back, lunge), for each unit with the "pass" status, check if their skill granting "pass" is still active; if not, remove "pass" status from that unit. In addition, for each tile in each Obstacle List (step I.A.2-4), if there is no longer an ally, enemy, or block occupying it, remove that tile from the respective Obstacle List. Clear all states except for those from Step I and return to <a href="#step2">Step II [Assess Threats]</a></p><br>
+					<p class="tab1">F. Select the best attacker, store its current location as the "starting tile", then it attacks its best target from the optimal tile.</p>
+					<p class="tab1">G. If the attacker lives and has Canto, determine best tile to move to using the following tiebreaks:</p>
+						<p class="tab2">1. Enemy threat: lowest #
+						<br>2. Standing still: N > Y
+						<br>3. Distance to starting tile from Step F: highest #
+						<br>4. Defense tile: Y > N
+						<br>5. Tiles from diagonal to starting tile from Step F: lowest #
+						<br>6. Special terrain: Flier Terrain > Forest > Trench >= Regular (Trench > Regular only if cavalry)
+						<br>7. Requires teleportation: Y > N
+						<br>8. Movement required: lowest #
+						<br>9. Tile priotiy value: highest #</p>
+					<p class="tab1">H. If an enemy was defeated OR if an enemy's location was displaced (i.e. drag back, lunge), for each unit with the "pass"
+						status, check if their skill granting "pass" is still active; if not, remove "pass" status from that unit. In addition, for each tile in each Obstacle List (step I.A.2-4), if there is no longer an ally, enemy, or block occupying it, remove that tile from the respective Obstacle List. Clear all states except for those from Step I and return to <ahref="#step2">Step II [Assess Threats]</a></p><br>
 					
 				<p class="bigger" id="step6">VI. Evaluate Post-Combat Assists:</p>
 					<p class="tab1">A. Add each unit with action with assist equipped to the assist list
@@ -191,7 +214,19 @@
 						<br>2. Is a staff user or has the Sacrifice assist Y > N (compare healers only)
 						<br>3. Distance from closest enemy: highest #
 						<br>4. Slot order: lowest #</p>
-					<p class="tab1">N. Best assister uses its assist on its best target from the optimal tile; clear all states except for those from Step I and return to <a href="#step2">Step II [Assess Threats]</a></p><br>
+					<p class="tab1">N. Select the best assister, store its current tile as the "starting tile", then it uses its assist on
+						its best target from the optimal tile</p>
+					<p class="tab1">O. If the assister has Canto, determine best tile to move to using the following tiebreaks:</p>
+						<p class="tab2">1. Enemy threat: lowest #
+							<br>2. Standing still: N > Y
+							<br>3. Distance to starting tile from Step N: highest #
+							<br>4. Defense tile: Y > N
+							<br>5. Tiles from diagonal to starting tile from Step N: lowest #
+							<br>6. Special terrain: Flier Terrain > Forest > Trench >= Regular (Trench > Regular only if cavalry)
+							<br>7. Requires teleportation: Y > N
+							<br>8. Movement required: lowest #
+							<br>9. Tile priotiy value: highest #</p>
+					<p class="tab1">P. Clear all states except for those from Step I and return to <a href="#step2">Step II [Assess Threats]</a></p><br>
 					
 				<p class="bigger" id="step7">VII. Evaluate Movement:</p>
 					<p class="tab1">A. If all units with actions have "cede move" status, skip to <a href="#step8">Step VIII [End Turn]</a>
@@ -231,32 +266,43 @@
 						<br>4. Special terrain: Flier Terrain > Forest > Trench >= Regular (Trench > Regular only if cavalry)
 						<br>5. Movement required: lowest #
 						<br>6. Tile priority value: highest #</p>
-					<p class="tab1">K. If there is at least one eligible block, choose and break the best block using the following tiebreaks:</p>
+					<p class="tab1">K. If there is at least one eligible block, choose the best block to breakusing the following tiebreaks:</p>
 						<p class="tab2">1. Distance from best tile from step G: lowest #
 						<br>2. Optimal attack tile is defense tile: Y > N
 						<br>3. Optimal attack tile's enemy threat: lowest #
 						<br>4. Tile priority value: highest #</p>
-					<p class="tab1">L. If a block was broken from Step M, clear all states except for those from Step I and return to <a href="#step2">Step II [Assess Threats]</a>
-					<p class="tab1">M. If unit has Pivot, determine best Pivot tile using the following tiebreaks:</p>
+					<p class="tab1">L. Store the unit's current tile as "Starting Tile", then break the best block from Step K using its optimal tile from Step J.</p>
+					<p class="tab1">M. If the unit has Canto, determine best tile to move to using the following tiebreaks:</p>
+						<p class="tab2">1. Enemy threat: lowest #
+							<br>2. Standing still: N > Y
+							<br>3. Distance to starting tile from Step L: highest #
+							<br>4. Defense tile: Y > N
+							<br>5. Tiles from diagonal to starting tile from Step L: lowest #
+							<br>6. Special terrain: Flier Terrain > Forest > Trench >= Regular (Trench > Regular only if cavalry)
+							<br>7. Requires teleportation: Y > N
+							<br>8. Movement required: lowest #
+							<br>9. Tile priotiy value: highest #</p>
+					<p class="tab1">N. If a block was broken in Step L, clear all states except for those from Step I and return to <a href="#step2">Step II [Assess Threats]</a></p>
+					<p class="tab1">O. If unit has Pivot, determine best Pivot tile using the following tiebreaks:</p>
 						<p class="tab2">1. Distance from target: lowest#
 						<br>2. Defense tile: Y > N
 						<br>3. Enemy threat: lowest #
 						<br>4. Tile priority value, based on tile from which Pivot is being used: highest #</p>
-					<p class="tab1">N. If unit has Pivot, determine which between best tile from step G and best Pivot tile from step L is the optimal move using the following tiebreaks:
+					<p class="tab1">P. If unit has Pivot, determine which between best tile from step G and best Pivot tile from step O is the optimal move using the following tiebreaks:
 						<p class="tab2">1. Distance from target: lowest#
 						<br>2. Defense tile: Y > N
 						<br>3. Enemy threat: lowest #
 						<br>4. Requires teleportation: Y > N (Pivot is implied N)
 						<br>5. Requires Pivot: N > Y</p>
-					<p class="tab1">O. If unit has Rally assist, create list of eligible assist targets adjacent to best tile according to <a href="charts.html#chartA">Chart E</a> and choose best target to assist using the following tiebreaks</p>
+					<p class="tab1">Q. If unit has Rally assist, create list of eligible assist targets adjacent to best tile according to <a href="charts.html#chartA">Chart E</a> and choose best target to assist using the following tiebreaks</p>
 						<p class="tab2">1. Amount of stats actually buffed: highest #					
 						<br>2. Distance from closest enemy: lowest #
 						<br>3. Visible stat total: highest #
 						<br>4. Slot order: highest #</p>
-					<p class="tab1">P. If assister is using "Rally Up," choose target that's within 2 spaces of target chosen in step P to assist using these tiebreaks:</p>
+					<p class="tab1">R. If assister is using "Rally Up," choose target that's within 2 spaces of target chosen in step Q to assist using these tiebreaks:</p>
 						<p class="tab2">1. Eligible target in step P but was not chosen: N > Y
 						<br>2. Slot order: highest #</p>
-					<p class="tab1">Q. If current tile is the best tile, unit gains "cede move" status; repeat <a href="#step7">Step VII [Evaluate Movement]</a>
+					<p class="tab1">S. If current tile is the best tile, unit gains "cede move" status; repeat <a href="#step7">Step VII [Evaluate Movement]</a>
 					<br>R. Unit moves to the best tile/Pivot tile; clear all states except for those from Step I and return to <a href="#step2">Step II [Assess Threats]</a></p><br>
 					
 				<p class="bigger" id="step8">VIII. End Turn</p>
