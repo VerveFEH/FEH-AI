@@ -986,7 +986,7 @@
 				</table>
 				
 				<br><br><h2 id="chartG">Chart G: Def/Res Debuff Skills List</h2>
-				<p>This chart lists skills which inflict Def and Res debuffs and are taken into consideration for the "debuffer" status for an attacker. If a skill inflicts def or res debuffs but is not on this list, it is NOT taken into consideration for the "debuffer" status. Don't ask me why, it seems to be completely arbitrary. 
+				<p>This chart lists skills which inflict Def and Res debuffs and are taken into consideration for the "debuffer" status for an attacker. If a skill inflicts def or res debuffs but is not on this list, it is NOT taken into consideration for the "debuffer" status (e.g. refined Rogue Dagger does not count).
 				
 				<br><br>There are currently two tiers of priority within this category. Tier 1 skills will have priority over tier 2 skills.</p>
 				
@@ -1044,65 +1044,108 @@
 				</table>
 				
 				<br><br><h2 id="chartH">Chart H: Miscellaneous Debuff Skills List</h2>
-				<p>This chart lists skills which inflict miscellaneous debuffs/poison damage and are taken into consideration for the "afflicter" status for an attacker. If a skill inflicts a debuff or does poison damage but is not on this list, it is NOT taken into consideration for the "afflicter" status. Don't ask me why, it seems to be completely arbitrary.</p>
+				<p>This chart lists skills which inflict miscellaneous debuffs/poison damage and are taken into consideration for the "afflicter" status for an attacker. If a skill inflicts a debuff or does poison damage but is not on this list, it is NOT taken into consideration for the "afflicter" status (e.g. Gravity, unrefined Monstrous Bow do not count).</p>
 				<table>
 					<tr>
-						<th>Weapons:</th>
+						<th>Poison damage:</th>
 						<td class="left">
 							<table>
 								<tr>
 									<td>Pain</td>
-									<td>Pain+ (unrefined)</td>
-									<td>Pain+ (refined)</td>
+									<td>Pain+ (unrefined & refined)</td>
 								</tr>
 								<tr>
-									<td>Panic</td>
-									<td>Panic+ (unrefined)</td>
-									<td>Panic+ (refined)</td>
+									<td>Deathly Dagger (unrefined & refined)</td>
 								</tr>
 								<tr>
-									<td>Candlelight</td>
-									<td>Candlelight+ (unrefined)</td>
-									<td>Candlelight+ (refined)</td>
+									<td>Sniper's Bow (unrefined & refined)</td>
 								</tr>
 								<tr>
-									<td>Flash</td>
-									<td>Flash+ (unrefined)</td>
-									<td>Flash+ (refined)</td>
+									<td>Obsessive Curse (unrefined & refined)</td>
 								</tr>
-								<tr>
-									<td>Trilemma</td>
-									<td>Trilemma+ (unrefined)</td>
-									<td>Trilemma+ (refined)</td>
-								</tr>
-								<tr>
-									<td>Legion's Axe</td>
-									<td>Legion's Axe+ (unrefined)</td>
-									<td>Legion's Axe+ (refined)</td>
-								</tr>
-								<tr>
-									<td>Monstrous Bow+ (refined)</td>
-									<td>Spectral Tome+ (refined)</td>
-								</tr>
-								<tr>
-									<td>Deathly Dagger (unrefined)</td>
-									<td>Deathly Dagger (refined)</td>
-								</tr>
-							</table>
-						</td>
-					</tr>
-					<tr>
-						<th>Passives:</th>
-						<td class="left">
-							<table>
 								<tr>
 									<td>
 										<div class="tooltip">Poison Strike 1/2/3*
 											<span class="tooltiptext">This skill has no priority properties in a losing combat result</span>
 										</div>
 									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>Panic:</th>
+						<td class="left">
+							<table>
+								<tr>
+									<td>Panic</td>
+									<td>Panic+ (unrefined & refined)</td>
+								</tr>
+								<tr>
+									<td>Legion's Axe</td>
+									<td>Legion's Axe+ (unrefined & refined)</td>
+								</tr>
+								<tr>
+									<td>Monstrous Bow+ (refined)</td>
+									<td>Spectral Bow+ (refined)</td>
+								</tr>
+								<tr>
 									<td>
 										<div class="tooltip">Panic Smoke 1/2/3*
+											<span class="tooltiptext">This skill has no priority properties in a losing combat result</span>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>Counterattacks disrupted:</th>
+						<td class="left">
+							<table>
+								<tr>
+									<td>Candlelight</td>
+									<td>Candlelight+ (unrefined & refined)</td>
+								</tr>
+								<tr>
+									<td>Flash</td>
+									<td>Flash+ (unrefined & refined)</td>
+								</tr>
+								<tr>
+									<td>Frostbite Breath</td>
+									<td>Venin Edge</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>Guard:</th>
+						<td class="left">
+							<table>
+								<tr>
+									<td>Witchy Wand</td>
+									<td>Witchy Wand+ (unrefined & refined)</td>
+								</tr>
+								<tr>
+									<td>Melancholy</td>
+									<td>Melancholy+ (unrefined & refined)</td>
+								</tr>
+								<tr>
+									<td>Hreiðmarr</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>Panic:</th>
+						<td class="left">
+							<table>
+								<tr>
+									<td>Flamelick Breath</td>
+								</tr>
+								<tr>
+									<td>
+										<div class="tooltip">Fatal Smoke 1/2/3*
 											<span class="tooltiptext">This skill has no priority properties in a losing combat result</span>
 										</div>
 									</td>
