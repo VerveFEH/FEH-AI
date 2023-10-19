@@ -58,8 +58,9 @@
 						
 				<p class="bigger" id="step2">II. Assess Threats:</p>
 					<p class="tab1">A. If no units have actions, skip to <a href="#step9">Step IX [End Turn]</a>
-					<br>B. For each unit with a weapon equipped, give "threatens enemy" status if at least 1 enemy is in unit's threat range (based on unit's CURRENT movement, NOT the movement stored from step I.C)
-					<br>C. For each unit, give "threatened by enemy" status if unit is in at least 1 enemy's threat range. Calculate threat range of each enemy based on enemy's stored movement range (step I.C) and accounting for blocks based on the Block Obstacle List (step I.A.4), and if an enemy has the "pass" status, factor in obstacles from their respective foes' Obstacle List and the Block Obstacle List(step I.A.2-4)</p><br>
+					<br>B. For each ally unit with a weapon equipped, give "threatens enemy" status if at least 1 enemy is in unit's threat range (based on unit's current movement including Warp, NOT the movement stored from step I.C)
+					<br>C. For each enemy unit with a weapon equipped, give "threatens enemy" status if at least 1 enemy is in unit's threat range (based on unit's current movement NOT including Warp, and NOT the movement stored from step I.C)
+					<br>D. For each unit, give "threatened by enemy" status if unit is in at least 1 enemy's threat range. Calculate threat range of each enemy based on enemy's stored movement range (step I.C) and accounting for blocks based on the Block Obstacle List (step I.A.4), and if an enemy has the "pass" status, factor in obstacles from their respective foes' Obstacle List and the Block Obstacle List(step I.A.2-4)</p><br>
 					
 				<p class="bigger" id="step3">III. Calculate Combat Results For Assist Evaluation:</p>
 					<p class="tab1">A. Create attacker list containing each unit with action that has the "threatens enemy" status; if list is empty, skip to <a href="#step7">Step VII [Evaluate Post-Combat Assists]</a>
